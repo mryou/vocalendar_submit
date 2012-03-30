@@ -13,3 +13,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore backup files
+*~
+.*.sw?
+*.bak
+*.orig
+*.org
+.#*#
