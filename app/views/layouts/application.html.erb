@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="wrapper">
+<div id="main-content">
+<%= message_block :flash_types => [:notice, :back, :confirm, :alert, :error, :info, :warn] %>
+<h1 id="main-title">VOCALENDAR タレコミセンター</h1>
 <%= yield %>
+</div>
+</div>
 
 </body>
-</html>
+</htm

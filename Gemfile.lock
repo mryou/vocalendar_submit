@@ -53,6 +53,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    message_block (1.0.4)
+      rails (>= 3.0.0)
     mime-types (1.18)
     multi_json (1.2.0)
     polyglot (0.3.3)
@@ -83,6 +85,8 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
+    responders (0.9.1)
+      railties (~> 3.1)
     sass (3.1.15)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -102,6 +106,7 @@ GEM
     uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    will-paginate-i18n (0.1.1)
     will_paginate (3.0.3)
 
 PLATFORMS
@@ -111,9 +116,12 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   exception_notification
   jquery-rails
+  message_block
   rails (= 3.2.2)
   rails-i18n
+  responders
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
+  will-paginate-i18n
   will_paginate (~> 3.0.0)

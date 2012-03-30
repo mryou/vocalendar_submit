@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      submission: タレコミ
+    attributes:
+      submission:
+        title: タイトル
+        start_datetime: 開始日時
+        end_datetime: 終了日時
+        all_day: 全日
+        where: 場所
+        description: 説明
+        status: ステータス
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name}を作成しました"
+      update:
+        notice: "%{resource_name}を更新しました"
+      destroy:
+        notice: "%{resource_name}を削除しました"
+        alert: "%{resource_name}が削除できませんでした"
