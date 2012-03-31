@@ -1,5 +1,28 @@
-<p id="notice"><%= notice %></p>
+<h2>申請されたイベントの詳細</h2>
 
+  <table class="submission-detail">
+    <tr>
+      <th><%= Submission.human_attribute_name :title %>:</th>
+      <td><%= @submission.title %></td>
+    </tr>
+    <tr>
+      <th><%= Submission.human_attribute_name :start_datetime %>:</th>
+      <td><%= @submission.start_datetime %></td>
+    </tr>
+    <tr>
+      <th><%= Submission.human_attribute_name :end_datetime %>:</th>
+      <td><%= @submission.end_datetime %></td>
+    </tr>
+    <tr>
+      <th><%= Submission.human_attribute_name :where %>:</th>
+      <td><%= @submission.where %></td>
+    </tr>
+    <tr>
+      <th><%= Submission.human_attribute_name :description %>:</th>
+      <td><%= simple_format @submission.description %></td>
+    </tr>
+  </table>
 
-<%= link_to 'Edit', edit_submission_path(@submission) %> |
-<%= link_to 'Back', submissions_path %>
+<%= gcal_add_button(@submission) %>
+
+<%= link_to '一覧に戻る', submissions_path, :class => 'action-button' %>
