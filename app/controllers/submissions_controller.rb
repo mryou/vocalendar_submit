@@ -2,7 +2,16 @@ class SubmissionsController < ApplicationController
   respond_to :html, :xml, :json
 
   def index
-    @submissions = Submission.paginate :page => params[:page], :per_page => 15
+    @new_subs = Submission.where(:status_id => Submission.status.new)
+      .order('created_at').paginate :page => params[:page], :per_page => 15
+    @accepted_subs = Submission.where(:status_id => Submission.status.accepted)
+      .order('updated_at desc').limit(10)
+    respond_with @new_subs
+  end
+
+  def list
+    @submissions = Submission.reorder('created_at desc')
+      .paginate :page => params[:page], :per_page => 50
     respond_with @submissions
   end
 

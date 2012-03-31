@@ -20,3 +20,8 @@ ja:
       destroy:
         notice: "%{resource_name}を削除しました"
         alert: "%{resource_name}が削除できませんでした"
+  status_names:
+    new: 未処理
+    accepted: 掲載済み
+    rejected: 却下
+    spam: spam

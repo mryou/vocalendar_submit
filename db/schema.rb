@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330175616) do
+ActiveRecord::Schema.define(:version => 20120331202422) do
 
   create_table "submissions", :force => true do |t|
     t.string   "title",          :default => "",    :null => false
@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(:version => 20120330175616) do
     t.integer  "status_id",      :default => 1,     :null => false
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.datetime "accepted_at"
   end
 
+  add_index "submissions", ["accepted_at", "status_id"], :name => "index_submissions_on_accepted_at_and_status_id"
   add_index "submissions", ["created_at"], :name => "index_submissions_on_created_at"
   add_index "submissions", ["start_datetime"], :name => "index_submissions_on_start_datetime"
   add_index "submissions", ["status_id"], :name => "index_submissions_on_status_id"

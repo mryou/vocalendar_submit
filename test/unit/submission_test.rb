@@ -60,9 +60,17 @@ class SubmissionTest < ActiveSupport::TestCase
     s = submissions(:one)
     s.all_day = true
     assert s.save, "save fail with all_day = true"
-$stderr.puts s.inspect
     assert_equal s.start_time, "00:00"
     assert_equal s.end_time, "00:00"
+  end
+
+  test "set accepted_at" do
+    s = submissions(:one)
+    s.save
+    assert !s.accepted_at, "accepted_at should not be set with new status"
+    s.status = Submission.status.accepted
+    s.save
+    assert s.accepted_at, "accepted_at should be set with non-new status"
   end
 
 end

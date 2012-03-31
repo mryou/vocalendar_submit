@@ -7,11 +7,23 @@
     </tr>
     <tr>
       <th><%= Submission.human_attribute_name :start_datetime %>:</th>
-      <td><%= @submission.start_datetime %></td>
+      <td>
+        <% if @submission.all_day? %>
+          <%= @submission.start_date %>
+        <% else %>
+          <%= @submission.start_datetime %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th><%= Submission.human_attribute_name :end_datetime %>:</th>
-      <td><%= @submission.end_datetime %></td>
+      <td>
+        <% if @submission.all_day? %>
+          <%= @submission.end_date %>
+        <% else %>
+          <%= @submission.end_datetime %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th><%= Submission.human_attribute_name :where %>:</th>
@@ -23,6 +35,32 @@
     </tr>
   </table>
 
-<%= gcal_add_button(@submission) %>
+<%= form_for(@submission) do |f| %>
+<p>
+<b>状態:</b> 
+  <%= f.collection_select :status_id, Submission.statuses, :id, :human_name %>
+  <%= f.submit :value => '変更する', :name => nil %>
+</p>
+<% end %>
+
+
+<% if @submission.status == :new %>
+  <p><%= gcal_add_button(@submission) %>
+  ※ 追加先のカレンダーを選択し直すのを忘れないようにして下さい！</p>
+<% end %>
+
+  <%- date = @submission.start_date.strftime("%Y%m%d") %>
+  <p>各カレンダーのこの日付を開く:
+  <%= link_to '自分のGoogleカレンダー',
+      "http://www.google.com/calendar/render?date=#{date}",
+      :class => 'action-button', :target => 'calwin' %>
+  <%= link_to '公開版VOCALENDAR', 
+      "http://www.google.com/calendar/embed?src=0mprpb041vjq02lk80vtu6ajgo%40group.calendar.google.com&dates=#{date}/#{date}",
+      :class => 'action-button', :target => 'calwin' %>
+  <%= link_to '編集版VOCALENDAR', 
+      "http://www.google.com/calendar/embed?src=pcg8ct8ulj96ptvqhllgcc181o%40group.calendar.google.com&dates=#{date}/#{date}",
+      :class => 'action-button', :target => 'calwin' %>
+  </p>
+
 
 <%= link_to '一覧に戻る', submissions_path, :class => 'action-button' %>

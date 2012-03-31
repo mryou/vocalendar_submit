@@ -8,7 +8,8 @@ class SubmissionsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:submissions)
+    assert_not_nil assigns(:new_subs)
+    assert_not_nil assigns(:accepted_subs)
   end
 
   test "should get new" do

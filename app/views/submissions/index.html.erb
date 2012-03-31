@@ -4,7 +4,7 @@
 
 <%= button_to 'イベントを登録', new_submission_path, :method => :get %>
 
-<% if !@submissions.blank? %>
+<% if !@new_subs.blank? %>
 <h3>登録処理待ちのイベント</h3>
 
 <table class="general-hor">
@@ -13,29 +13,43 @@
     <th>ID</th>
     <th>タイトル</th>
     <th>申請日時</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
  </thead>
  <tbody>
-<% @submissions.each do |sub| %>
+<% @new_subs.each do |sub| %>
   <tr>
     <td><%= link_to "##{sub.id}", sub %></td>
     <td><%= link_to sub.title, sub %></td>
     <td><%= sub.created_at.strftime("%m/%d %H:%M") %></td>
-    <td><%= link_to 'Show', sub %></td>
-    <td><%= link_to 'Edit', edit_submission_path(sub) %></td>
   </tr>
 <% end %>
   </tbody>
 </table>
-<%= will_paginate @submissions %>
+<%= will_paginate @new_subs %>
 <% end %>
 
 <h3>最近登録されたイベント</h3>
-
 <p>
-※ここのから登録されたものだけが表示されています。
+※ここから登録されたものだけが表示されています。
 </p>
 
+<table class="general-hor">
+ <thead>
+  <tr>
+    <th>ID</th>
+    <th>タイトル</th>
+    <th>申請日時</th>
+    <th>処理日時</th>
+  </tr>
+ </thead>
+ <tbody>
+<% @accepted_subs.each do |sub| %>
+  <tr>
+    <td><%= link_to "##{sub.id}", sub %></td>
+    <td><%= link_to sub.title, sub %></td>
+    <td><%= sub.created_at.strftime("%m/%d %H:%M") %></td>
+    <td><%= sub.created_at.strftime("%m/%d %H:%M") %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>

@@ -4,6 +4,7 @@ class Submission < ActiveRecord::Base
 
   before_validation :set_end_datetime
   before_validation :clear_time_when_all_day
+  before_save :set_accepted_at
 
   validates :title, :presence => true
   validates :start_datetime, :presence => true
@@ -12,17 +13,47 @@ class Submission < ActiveRecord::Base
   STATUS_ID_NAME_MAP = {1 => :new, 2 => :accepted, 3 => :rejected, 4 => :spam}
   STATUS_NAME_ID_MAP = STATUS_ID_NAME_MAP.invert
   @@status_id_by_name = Struct.new(*STATUS_ID_NAME_MAP.values).new(*STATUS_ID_NAME_MAP.keys)
-
-  def self.status
-    @@status_id_by_name
+  @@status_collection = STATUS_ID_NAME_MAP.map do |k, v|
+    Struct.new(:id, :name, :human_name).new(k, v, I18n.t("status_names.#{v}"))
   end
+
+  class << self
+    def status
+      @@status_id_by_name
+    end
+
+    def statuses
+      @@status_collection
+    end
+    alias_method :status_collection, :statuses
+  end
+
+  def initalize
+    @need_accepted_at = false
+  end
+  attr_accessor :need_accepted_at
+  alias_method :need_accepted_at?, :need_accepted_at
 
   def status
     STATUS_ID_NAME_MAP[self.status_id.to_i]
   end
 
+  def human_status
+    I18n.t("status_names." + STATUS_ID_NAME_MAP[self.status_id.to_i].to_s)
+  end
+
   def status=(v)
     self.status_id = /^[0-9]+$/.match(v.to_s) ? v.to_i : STATUS_NAME_ID_MAP[v.to_s.to_sym]
+  end
+
+  def status_id=(v)
+    v.blank? and return v
+    old_sym = self.status
+    self[:status_id] = v.to_i
+    if old_sym == :new && STATUS_ID_NAME_MAP[v.to_i] != :new
+      self.need_accepted_at = true
+    end
+    v
   end
 
   def start_date
@@ -103,5 +134,10 @@ class Submission < ActiveRecord::Base
     self.start_datetime.blank? || self.end_datetime.blank? and return
     self.start_datetime <= self.end_datetime and return
     errors.add :end_datetime, "が開始日より前になっています"
+  end
+
+  def set_accepted_at
+    need_accepted_at? or return true
+    self[:accepted_at] = Time.now
   end
 end
