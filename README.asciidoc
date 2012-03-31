@@ -1,0 +1,36 @@
+
+VOCALENDAR event submit frontend
+================================
+
+VOCALENDAR (http://curioustander.com/vocalendar/) event submission
+queue and queue manager web app.
+
+System Requirements
+-------------------
+
+ * ruby (>= 1.9.1)
+ * rails (>= 3.2.0)
+
+Description
+-----------
+
+This app is a standard rails (http://rubyonrails.org/) application.
+
+You can test with built-in server by following commands;
+-----------------------------------------------------
+$ rake db:setup
+$ rails server
+-----------------------------------------------------
+
+Copyright Information
+---------------------
+
+License
+~~~~~~~
+
+MIT License ( http://www.opensource.org/licenses/MIT )
+
+Author
+~~~~~~
+
+twitter: @gull08
