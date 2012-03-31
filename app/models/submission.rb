@@ -34,11 +34,13 @@ class Submission < ActiveRecord::Base
   end
 
   def start_date=(d)
+    d.blank? and return
     d = force_to_date(d)
     self.start_datetime = datetime_copy(self.start_datetime, :year => d.year, :month => d.month, :day => d.day)
   end
 
   def end_date=(d)
+    d.blank? and return
     d = force_to_date(d)
     self.end_datetime = datetime_copy(self.end_datetime, :year => d.year, :month => d.month, :day => d.day)
   end
@@ -52,11 +54,13 @@ class Submission < ActiveRecord::Base
   end
 
   def start_time=(t)
+    t.blank? and return
     t = force_to_time(t)
     self.start_datetime = datetime_copy(self.start_datetime, :hour => t.hour, :min => t.min, :sec => t.sec)
   end
 
   def end_time=(t)
+    t.blank? and return
     t = force_to_time(t)
     self.end_datetime = datetime_copy(self.end_datetime, :hour => t.hour, :min => t.min, :sec => t.sec)
   end
