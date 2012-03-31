@@ -2,15 +2,17 @@
   <table class="submission-form">
     <tr>
       <th><%= f.label :title %>:</th>
-      <td><%= f.text_field :title %></td>
+      <td><%= f.text_field :title, :size => 40 %></td>
     </tr>
     <tr>
       <th><%= f.label :start_datetime %>:</th>
-      <td><%= f.datetime_select :start_datetime, :use_month_numbers => true %></td>
+      <td><%= f.text_field :start_date, :size => 10 %>
+        <%= f.text_field :start_time, :size => 7 %></td>
     </tr>
     <tr>
       <th><%= f.label :end_datetime %>:</th>
-      <td><%= f.datetime_select :end_datetime, :use_month_numbers => true %></td>
+      <td><%= f.text_field :end_date, :size => 10 %>
+        <%= f.text_field :end_time, :size => 7 %></td>
     </tr>
     <tr>
       <th></th>
@@ -22,7 +24,7 @@
     </tr>
     <tr>
       <th><%= f.label :description %>:</th>
-      <td><%= f.text_area :description %></td>
+      <td><%= f.text_area :description, :rows => 7 %></td>
     </tr>
   </table>
     <div class="actions">
@@ -32,9 +34,13 @@
 
 <%= javascript_tag do %>
   $(function() {
-    var = show 
-    $('#submission_all_day').bind('change', function() {
-      $('#submission_end_datetime_4i, #submission_end_datetime_5i')[this.checked ? 'hide' : 'show']()
+    $('#submission_start_date, #submission_start_time,' +
+      '#submission_end_date, #submission_end_time').calendricalDateTimeRange({
+        iso: 1
     });
+
+    $('#submission_all_day').bind('change', function() {
+      $('#submission_start_time, #submission_end_time')[this.checked ? 'hide' : 'show']()
+    }).trigger('change');
   });
 <% end %>
