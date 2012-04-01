@@ -55,10 +55,10 @@
       "http://www.google.com/calendar/render?date=#{date}",
       :class => 'action-button', :target => 'calwin' %>
   <%= link_to '公開版VOCALENDAR', 
-      "http://www.google.com/calendar/embed?src=0mprpb041vjq02lk80vtu6ajgo%40group.calendar.google.com&dates=#{date}/#{date}",
+      "http://www.google.com/calendar/embed?src=CGI.escape(Rails.configuration.public_calendar_id)&dates=#{date}/#{date}",
       :class => 'action-button', :target => 'calwin' %>
   <%= link_to '編集版VOCALENDAR', 
-      "http://www.google.com/calendar/embed?src=pcg8ct8ulj96ptvqhllgcc181o%40group.calendar.google.com&dates=#{date}/#{date}",
+      "http://www.google.com/calendar/embed?src=#{CGI.escape(Rails.configuration.private_calendar_id)}&dates=#{date}/#{date}",
       :class => 'action-button', :target => 'calwin' %>
   </p>
 

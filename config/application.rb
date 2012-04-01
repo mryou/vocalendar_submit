@@ -58,5 +58,10 @@ module VocalendarSubmit
     config.assets.version = '1.0'
 
     config.i18n.default_locale = :ja
+
+    # app specific settings
+    config.public_calendar_id = '0mprpb041vjq02lk80vtu6ajgo@group.calendar.google.com'
+    config.private_calendar_id = 'pcg8ct8ulj96ptvqhllgcc181o@group.calendar.google.com'
+
   end
 end
