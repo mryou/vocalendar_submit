@@ -49,8 +49,7 @@
 
 
 <% if @submission.status == :new %>
-  <p><%= gcal_add_button(@submission) %>
-  ※ 追加先のカレンダーを選択し直すのを忘れないようにして下さい！</p>
+  <p><%= gcal_add_button(@submission) %></p>
 <% end %>
 
   <%- date = @submission.start_date.strftime("%Y%m%d") %>
