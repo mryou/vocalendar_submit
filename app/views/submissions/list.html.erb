@@ -7,6 +7,7 @@ time_fmt = "%Y-%m-%d %H:%M:%S"
   <thead>
     <tr>
       <th>ID</th>
+      <th><%= Submission.human_attribute_name :category_name %></th>
       <th><%= Submission.human_attribute_name :title %></th>
       <th><%= Submission.human_attribute_name :created_at %></th>
       <th><%= Submission.human_attribute_name :accepted_at %></th>
@@ -17,6 +18,7 @@ time_fmt = "%Y-%m-%d %H:%M:%S"
 <% @submissions.each do |sub| %>
     <tr>
       <td><%= link_to "##{sub.id}", sub %></td>
+      <td><%= sub.category_name %></td>
       <td><%= link_to sub.title, sub %></td>
       <td><%= sub.created_at.strftime(time_fmt) %></td>
       <td><%= sub.accepted_at.try(:strftime, time_fmt) %></td>

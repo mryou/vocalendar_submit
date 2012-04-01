@@ -2,6 +2,8 @@
 class Submission < ActiveRecord::Base
   include Nemui::Utils
 
+  belongs_to :category
+
   before_validation :set_end_datetime
   before_validation :clear_time_when_all_day
   before_save :set_accepted_at
@@ -10,6 +12,7 @@ class Submission < ActiveRecord::Base
   validates :where, :length => { :maximum => 300 }
   validates :description, :length => { :maximum => 2000 }
   validates :start_datetime, :presence => true
+  validates :category_id, :presence => true
   validate :check_valid_end_datetime
 
   STATUS_ID_NAME_MAP = {1 => :new, 2 => :accepted, 3 => :rejected, 4 => :spam}
@@ -35,6 +38,15 @@ class Submission < ActiveRecord::Base
   end
   attr_accessor :need_accepted_at
   alias_method :need_accepted_at?, :need_accepted_at
+
+  def category_name
+    self.category.try(:name)
+  end
+
+  def category_name=(v)
+    c = Category.find_by_name(v)
+    self.category_id = c.id
+  end
 
   def status
     STATUS_ID_NAME_MAP[self.status_id.to_i]

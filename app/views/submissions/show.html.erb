@@ -2,6 +2,10 @@
 
   <table class="submission-detail">
     <tr>
+      <th><%= Submission.human_attribute_name :category_name %>:</th>
+      <td><%= @submission.category_name %></td>
+    </tr>
+    <tr>
       <th><%= Submission.human_attribute_name :title %>:</th>
       <td><%= @submission.title %></td>
     </tr>
@@ -37,7 +41,7 @@
 
 <%= form_for(@submission) do |f| %>
 <p>
-<b>状態:</b> 
+<b><%= Submission.human_attribute_name :status %>:</b> 
   <%= f.collection_select :status_id, Submission.statuses, :id, :human_name %>
   <%= f.submit :value => '変更する', :name => nil %>
 </p>

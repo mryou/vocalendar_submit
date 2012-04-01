@@ -34,7 +34,7 @@ table p { margin-top: 0; }
   display: inline-block;
 }
 
-h1 h2, h3, h4, h5 { color: #108361; }
+h1, h2, h3, h4, h5 { color: #108361; }
 h1#main-title {
   text-align: right;
   margin-top: 0;
@@ -52,7 +52,7 @@ h1#main-title {
   }
 }
 
-.submission-detail {
+.submission-detail, .category-detail {
   border: none;
   td, th { border: none; }
   th { text-align: right; vertical-align: top; }

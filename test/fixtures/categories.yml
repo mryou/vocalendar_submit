@@ -4,11 +4,7 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  title: hello world expo
-  start_datetime: 2012-02-01 10:00 JST
-  end_datetime: 2012-02-02 18:00 JST
-  all_day: false
-  where: helow world room
-  description: say hello world!
-  category_id: 1
+one: 
+  name: cat-1
+two:
+  name: cat-2

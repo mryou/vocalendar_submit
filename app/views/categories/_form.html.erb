@@ -1,0 +1,25 @@
+<%= form_for(@category) do |f| %>
+  <table class="category-detail">
+    <tr>
+      <th><%= f.label :name %>:</th>
+      <td>
+        <% if @category.new_record? %>
+        <%= f.text_field :name %>
+        <% else %>
+        <%= @category.name %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :order_class %>:</th>
+      <td><%= f.text_field :order_class %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :description %>:</th>
+      <td><%= f.text_field :description %></td>
+    </tr>
+  </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

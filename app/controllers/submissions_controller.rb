@@ -1,6 +1,4 @@
 class SubmissionsController < ApplicationController
-  respond_to :html, :xml, :json
-
   def index
     @new_subs = Submission.where(:status_id => Submission.status.new)
       .order('created_at').paginate :page => params[:page], :per_page => 15

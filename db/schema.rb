@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120331202422) do
+ActiveRecord::Schema.define(:version => 20120401130945) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name",                         :null => false
+    t.integer  "order_class", :default => 200, :null => false
+    t.text     "description"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  add_index "categories", ["name"], :name => "index_categories_on_name", :unique => true
+  add_index "categories", ["order_class", "id"], :name => "index_categories_on_order_class_and_id"
 
   create_table "submissions", :force => true do |t|
     t.string   "title",          :default => "",    :null => false
@@ -24,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20120331202422) do
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.datetime "accepted_at"
+    t.integer  "category_id"
   end
 
   add_index "submissions", ["accepted_at", "status_id"], :name => "index_submissions_on_accepted_at_and_status_id"

@@ -1,0 +1,21 @@
+<h1>カテゴリ一覧</h1>
+
+<table class="general-hor">
+  <tr>
+    <th><%= Category.human_attribute_name :name %></th>
+    <th><%= Category.human_attribute_name :order_class %></th>
+    <th><%= Category.human_attribute_name :description %></th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= link_to category.name, edit_category_path(category) %></td>
+    <td><%= category.order_class %></td>
+    <td><%= category.description%></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'カテゴリの新規作成', new_category_path, :class => 'action-button' %>

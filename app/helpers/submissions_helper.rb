@@ -2,8 +2,9 @@
 module SubmissionsHelper
   def gcal_add_button(sub)
     urlbase = 'http://www.google.com/calendar/event?action=TEMPLATE&'
+    cat_prefix = sub.category_name ? "【#{sub.category_name}】" : ''
     attrs = {
-      :text => sub.title,
+      :text => cat_prefix + sub.title,
       :src => Rails.configuration.private_calendar_id,
     }
     if sub.all_day?

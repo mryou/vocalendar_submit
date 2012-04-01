@@ -3,7 +3,7 @@ require 'test_helper'
 class SubmissionTest < ActiveSupport::TestCase
   test "simple save" do
     sub = submissions(:one)
-    assert sub.save, "simple save"
+    assert sub.save, "simple save failed"
   end
 
   test "auto set end date by start date" do

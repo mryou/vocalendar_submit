@@ -10,4 +10,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def rand_cat
+    Category.new :name => "c#{SecureRandom.base64(6)}"
+  end
+
+  def cat_allowed_attrs(c)
+    {:name => c.name, :order_class => c.order_class, :description => c.description}
+  end
 end

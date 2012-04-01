@@ -1,4 +1,6 @@
 VocalendarSubmit::Application.routes.draw do
+  resources :categories
+
   resources :submissions do
     collection do
       get 'list' => 'submissions#list'
