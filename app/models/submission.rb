@@ -6,7 +6,9 @@ class Submission < ActiveRecord::Base
   before_validation :clear_time_when_all_day
   before_save :set_accepted_at
 
-  validates :title, :presence => true
+  validates :title, :presence => true, :length => { :maximum => 80 }
+  validates :where, :length => { :maximum => 300 }
+  validates :description, :length => { :maximum => 2000 }
   validates :start_datetime, :presence => true
   validate :check_valid_end_datetime
 
