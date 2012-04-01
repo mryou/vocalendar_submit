@@ -172,7 +172,7 @@ class Submission < ActiveRecord::Base
 
   def url_encode_badchar
     self.url.blank? and return true
-    self.url = URI.escape(self.url.strip)
+    self.url = URI.escape(self.url.strip, /[^-_.!~*'()a-zA-Z\d;\/?:@&=+$,\[\]%]/n)
     true
   end
 end

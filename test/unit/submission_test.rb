@@ -95,10 +95,10 @@ class SubmissionTest < ActiveSupport::TestCase
 
   test "url auto encode" do
     s = submissions(:one)
-    badurl = "https://hoge.com/abc d\ne`f\xa0?test=1&v=n"
+    badurl = "https://hoge.com/abc d\ne`f\xa0?test=1%20&v=n"
     s.url = badurl
     assert s.save, "save failed with URL has trailing space"
-    assert_equal s.url , URI.escape(badurl)
+    assert_equal s.url , 'https://hoge.com/abc%20d%0Ae%60f%A0?test=1%20&v=n'
   end
 
 end
