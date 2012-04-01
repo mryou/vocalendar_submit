@@ -51,7 +51,7 @@ class Submission < ActiveRecord::Base
 
   def category_name=(v)
     c = Category.find_by_name(v)
-    self.category_id = c.id
+    self.category_id = c.try(:id)
   end
 
   def status
