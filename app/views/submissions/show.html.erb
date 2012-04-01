@@ -39,7 +39,7 @@
     </tr>
     <tr>
       <th><%= Submission.human_attribute_name :url %>:</th>
-      <td><%= link_to @submission.url, @submission.url %></td>
+      <td><%= link_to_if @submission.url, @submission.url, @submission.url %></td>
     </tr>
   </table>
 
