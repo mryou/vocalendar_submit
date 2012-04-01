@@ -4,6 +4,7 @@ module SubmissionsHelper
     urlbase = 'http://www.google.com/calendar/event?action=TEMPLATE&'
     attrs = {
       :text => sub.title,
+      :src => Rails.configuration.private_calendar_id,
     }
     if sub.all_day?
       attrs[:dates] = sub.start_datetime.strftime("%Y%m%d") +
