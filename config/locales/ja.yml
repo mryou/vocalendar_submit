@@ -30,6 +30,9 @@ ja:
       destroy:
         notice: "%{resource_name}を削除しました"
         alert: "%{resource_name}が削除できませんでした"
+    submissions:
+      create:
+        notice: "申請を受け付けました。情報提供ありがとう！"
   status_names:
     new: 未処理
     accepted: 掲載済み
