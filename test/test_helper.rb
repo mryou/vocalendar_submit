@@ -17,6 +17,7 @@ class ActiveSupport::TestCase
   def allowed_attrs(o)
     ret = {}
     o.class.accessible_attributes.each do |attr|
+      o.attribute_names.member? attr or next
       ret[attr] = o.__send__ attr
     end
     ret

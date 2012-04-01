@@ -3,14 +3,15 @@ require 'test_helper'
 class SubmissionTest < ActiveSupport::TestCase
   test "simple save" do
     sub = submissions(:one)
-    assert sub.save, "simple save failed"
+    assert sub.save, "simple save failed: #{sub.errors.inspect}"
   end
 
   test "auto set end date by start date" do
     attrs = allowed_attrs(submissions(:one))
     attrs.delete "end_datetime"
+
     submission = Submission.new attrs
-    assert submission.save, "save fail without end datetime"
+    assert submission.save, "save fail without end datetime: #{submission.errors.inspect}"
     assert_equal submission.end_datetime, submission.start_datetime, "start and end date is different"
   end
 
@@ -71,6 +72,33 @@ class SubmissionTest < ActiveSupport::TestCase
     s.status = Submission.status.accepted
     s.save
     assert s.accepted_at, "accepted_at should be set with non-new status"
+  end
+
+  test "save with url" do
+    s = submissions(:one)
+    s.url = 'http://test.com/'
+    assert s.save, "save failed with URL"
+  end
+
+  test "invalid url" do
+    s = submissions(:one)
+    s.url = 'hoge'
+    assert !s.save, "save success with invalid URL"
+  end
+
+  test "url strip" do
+    s = submissions(:one)
+    s.url = 'https://hoge.com/abc     '
+    assert s.save, "save failed with URL has trailing space"
+    assert_equal s.url , 'https://hoge.com/abc'
+  end
+
+  test "url auto encode" do
+    s = submissions(:one)
+    badurl = "https://hoge.com/abc d\ne`f\xa0?test=1&v=n"
+    s.url = badurl
+    assert s.save, "save failed with URL has trailing space"
+    assert_equal s.url , URI.escape(badurl)
   end
 
 end

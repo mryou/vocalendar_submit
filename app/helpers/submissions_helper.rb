@@ -18,6 +18,11 @@ module SubmissionsHelper
     end
     sub.where.blank? or  attrs[:location] = sub.where
     sub.description.blank? or  attrs[:details] = sub.description
+    unless sub.url.blank?
+      attrs[:sprop] = "website:" + sub.url.sub(%r{^https?://}, '')
+      attrs[:details].blank? or attrs[:details] += "\n\n"
+      attrs[:details] = attrs[:details].to_s + "URL: #{sub.url}"
+    end
     url = urlbase + attrs.map{|k, v| "#{k}=#{CGI.escape(v)}"}.join('&')
     link_to 'Googleカレンダーの編集画面を開く', url, :class => 'action-button main-action add-google-cal', :target => '_blank'
   end

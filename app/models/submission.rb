@@ -6,6 +6,7 @@ class Submission < ActiveRecord::Base
 
   before_validation :set_end_datetime
   before_validation :clear_time_when_all_day
+  before_validation :url_encode_badchar
   before_save :set_accepted_at
 
   validates :title, :presence => true, :length => { :maximum => 80 }
@@ -13,9 +14,10 @@ class Submission < ActiveRecord::Base
   validates :description, :length => { :maximum => 2000 }
   validates :start_datetime, :presence => true
   validates :category_id, :presence => true
+  validate :check_url
   validate :check_valid_end_datetime
 
-  attr_accessible :title, :where, :description,
+  attr_accessible :title, :where, :description, :url,
     :start_datetime, :start_date, :start_time,
     :end_datetime, :end_date, :end_time,
     :category_id, :category_name, :status_id, :all_day
@@ -156,8 +158,21 @@ class Submission < ActiveRecord::Base
     errors.add :end_datetime, "が開始日より前になっています"
   end
 
+  def check_url
+    self.url.blank? and return
+    self.url.strip.blank? and return
+    %r{^https?://[a-zA-Z0-9_]+\.}.match(url) and return
+    errors.add :url, "が正しくありません"
+  end
+
   def set_accepted_at
     need_accepted_at? or return true
     self[:accepted_at] = Time.now
+  end
+
+  def url_encode_badchar
+    self.url.blank? and return true
+    self.url = URI.escape(self.url.strip)
+    true
   end
 end

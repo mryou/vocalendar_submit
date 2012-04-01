@@ -17,6 +17,7 @@ ja:
         accepted_at: 処理日時
         category: カテゴリ
         category_name: カテゴリ
+        url: URL
       category:
         name: 名前
         order_class: 整列優先度

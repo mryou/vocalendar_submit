@@ -30,6 +30,11 @@
       <th><%= f.label :description %>:</th>
       <td><%= f.text_area :description, :rows => 7 %></td>
     </tr>
+    <tr>
+      <th><%= f.label :url %>:</th>
+      <td><%= f.text_field :url %>
+          <p class="note">※ 一次情報の URL があれば入力して下さい。</p></td>
+    </tr>
   </table>
     <div class="actions">
       <%= f.submit %>

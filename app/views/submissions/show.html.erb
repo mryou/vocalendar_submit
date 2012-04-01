@@ -37,6 +37,10 @@
       <th><%= Submission.human_attribute_name :description %>:</th>
       <td><%= simple_format @submission.description %></td>
     </tr>
+    <tr>
+      <th><%= Submission.human_attribute_name :url %>:</th>
+      <td><%= link_to @submission.url, @submission.url %></td>
+    </tr>
   </table>
 
 <%= form_for(@submission) do |f| %>
