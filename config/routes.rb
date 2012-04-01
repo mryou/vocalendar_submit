@@ -1,5 +1,9 @@
 VocalendarSubmit::Application.routes.draw do
-  resources :submissions
+  resources :submissions do
+    collection do
+      get 'list' => 'submissions#list'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

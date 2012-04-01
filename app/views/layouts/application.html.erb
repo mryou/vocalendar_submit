@@ -7,10 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="header-menu">
+ <%= link_to 'トップ', root_path %>
+ <%= link_to '申請一覧', list_submissions_path %>
+</div>
 <div id="wrapper">
 <div id="main-content">
 <%= message_block :flash_types => [:notice, :back, :confirm, :alert, :error, :info, :warn] %>
-<h1 id="main-title">VOCALENDAR タレコミセンター</h1>
+<h1 id="main-title"><%= link_to 'VOCALENDAR タレコミセンター', root_path %></h1>
 <%= yield %>
 </div>
 </div>

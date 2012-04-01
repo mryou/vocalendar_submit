@@ -1,0 +1,28 @@
+<%-
+time_fmt = "%Y-%m-%d %H:%M:%S"
+-%>
+<h2>登録申請の一覧</h2>
+
+<table class="general-hor">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th><%= Submission.human_attribute_name :title %></th>
+      <th><%= Submission.human_attribute_name :created_at %></th>
+      <th><%= Submission.human_attribute_name :accepted_at %></th>
+      <th><%= Submission.human_attribute_name :status %></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @submissions.each do |sub| %>
+    <tr>
+      <td><%= link_to "##{sub.id}", sub %></td>
+      <td><%= link_to sub.title, sub %></td>
+      <td><%= sub.created_at.strftime(time_fmt) %></td>
+      <td><%= sub.accepted_at.try(:strftime, time_fmt) %></td>
+      <td><%= sub.human_status %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+<%= will_paginate @submissions %>
