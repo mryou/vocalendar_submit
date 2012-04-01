@@ -11,8 +11,8 @@
  <thead>
   <tr>
     <th>ID</th>
-    <th>タイトル</th>
-    <th>申請日時</th>
+    <th><%= Submission.human_attribute_name :title %></th>
+    <th><%= Submission.human_attribute_name :created_at %></th>
   </tr>
  </thead>
  <tbody>
@@ -37,9 +37,9 @@
  <thead>
   <tr>
     <th>ID</th>
-    <th>タイトル</th>
-    <th>申請日時</th>
-    <th>処理日時</th>
+    <th><%= Submission.human_attribute_name :title %></th>
+    <th><%= Submission.human_attribute_name :created_at %></th>
+    <th><%= Submission.human_attribute_name :accepted_at %></th>
   </tr>
  </thead>
  <tbody>
@@ -48,7 +48,7 @@
     <td><%= link_to "##{sub.id}", sub %></td>
     <td><%= link_to sub.title, sub %></td>
     <td><%= sub.created_at.strftime("%m/%d %H:%M") %></td>
-    <td><%= sub.created_at.strftime("%m/%d %H:%M") %></td>
+    <td><%= sub.accepted_at.try(:strftime, "%m/%d %H:%M") %></td>
   </tr>
 <% end %>
   </tbody>

@@ -5,7 +5,7 @@ class SubmissionsController < ApplicationController
     @new_subs = Submission.where(:status_id => Submission.status.new)
       .order('created_at').paginate :page => params[:page], :per_page => 15
     @accepted_subs = Submission.where(:status_id => Submission.status.accepted)
-      .order('updated_at desc').limit(10)
+      .order('accepted_at desc').limit(10)
     respond_with @new_subs
   end
 
