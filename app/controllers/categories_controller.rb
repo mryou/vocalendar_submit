@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(params[:category])
     @category.save
-    respond_with(@category)
+    respond_with @category, :location => categories_path
   end
 
   # PUT /categories/1

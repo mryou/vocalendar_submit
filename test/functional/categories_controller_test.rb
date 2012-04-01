@@ -21,7 +21,8 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_difference('Category.count') do
       post :create, category: cat_allowed_attrs(rand_cat)
     end
-    assert_redirected_to category_path(assigns(:category))
+    assert assigns(:category)
+    assert_redirected_to categories_path
   end
 
   test "should show category" do
