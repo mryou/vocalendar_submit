@@ -14,7 +14,11 @@ class ActiveSupport::TestCase
     Category.new :name => "c#{SecureRandom.base64(6)}"
   end
 
-  def cat_allowed_attrs(c)
-    {:name => c.name, :order_class => c.order_class, :description => c.description}
+  def allowed_attrs(o)
+    ret = {}
+    o.class.accessible_attributes.each do |attr|
+      ret[attr] = o.__send__ attr
+    end
+    ret
   end
 end

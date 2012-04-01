@@ -19,7 +19,7 @@ class CategoriesControllerTest < ActionController::TestCase
 
   test "should create category" do
     assert_difference('Category.count') do
-      post :create, category: cat_allowed_attrs(rand_cat)
+      post :create, category: allowed_attrs(rand_cat)
     end
     assert assigns(:category)
     assert_redirected_to categories_path
@@ -36,7 +36,7 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test "should update category" do
-    put :update, id: @category, category: cat_allowed_attrs(@category)
+    put :update, id: @category, category: allowed_attrs(@category)
     assert_redirected_to category_path(assigns(:category))
   end
 

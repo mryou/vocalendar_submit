@@ -3,6 +3,7 @@ require 'test_helper'
 class SubmissionsControllerTest < ActionController::TestCase
   setup do
     @submission = submissions(:one)
+    @submission.save
   end
 
   test "should get index" do
@@ -19,7 +20,7 @@ class SubmissionsControllerTest < ActionController::TestCase
 
   test "should create submission" do
     assert_difference('Submission.count') do
-      post :create, submission: @submission.attributes
+      post :create, submission: allowed_attrs(@submission)
     end
 
     assert_redirected_to submissions_path
@@ -36,7 +37,7 @@ class SubmissionsControllerTest < ActionController::TestCase
   end
 
   test "should update submission" do
-    put :update, id: @submission, submission: @submission.attributes
+    put :update, id: @submission, submission: allowed_attrs(@submission)
     assert_redirected_to submission_path(assigns(:submission))
   end
 

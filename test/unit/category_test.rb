@@ -9,7 +9,7 @@ class CategoryTest < ActiveSupport::TestCase
   test "validate fail on name uniqueness" do
     c1 = rand_cat
     c1.save
-    c2 = Category.new cat_allowed_attrs(c1)
+    c2 = Category.new allowed_attrs(c1)
     assert !c2.save, "save success with same name"
   end
 

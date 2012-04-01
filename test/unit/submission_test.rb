@@ -7,7 +7,7 @@ class SubmissionTest < ActiveSupport::TestCase
   end
 
   test "auto set end date by start date" do
-    attrs = submissions(:one).attributes
+    attrs = allowed_attrs(submissions(:one))
     attrs.delete "end_datetime"
     submission = Submission.new attrs
     assert submission.save, "save fail without end datetime"
@@ -15,14 +15,14 @@ class SubmissionTest < ActiveSupport::TestCase
   end
 
   test "start datetime validation fails" do
-    attrs = submissions(:one).attributes
+    attrs = allowed_attrs(submissions(:one))
     attrs.delete "start_datetime"
     submission = Submission.new attrs
     assert !submission.save, "save success without start datetime"
   end
 
   test "title validation fails" do
-    attrs = submissions(:one).attributes
+    attrs = allowed_attrs(submissions(:one))
     attrs.delete "title"
     submission = Submission.new attrs
     assert !submission.save, "save success without title"

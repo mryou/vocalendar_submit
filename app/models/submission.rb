@@ -15,6 +15,12 @@ class Submission < ActiveRecord::Base
   validates :category_id, :presence => true
   validate :check_valid_end_datetime
 
+  attr_accessible :title, :where, :description,
+    :start_datetime, :start_date, :start_time,
+    :end_datetime, :end_date, :end_time,
+    :category_id, :category_name, :status_id, :all_day
+    
+
   STATUS_ID_NAME_MAP = {1 => :new, 2 => :accepted, 3 => :rejected, 4 => :spam}
   STATUS_NAME_ID_MAP = STATUS_ID_NAME_MAP.invert
   @@status_id_by_name = Struct.new(*STATUS_ID_NAME_MAP.values).new(*STATUS_ID_NAME_MAP.keys)
