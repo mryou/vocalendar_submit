@@ -4,7 +4,7 @@
       <th><%= f.label :name %>:</th>
       <td>
         <% if @category.new_record? %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name %> ※一度決定すると変更できません
         <% else %>
         <%= @category.name %>
         <% end %>
@@ -17,6 +17,10 @@
     <tr>
       <th><%= f.label :description %>:</th>
       <td><%= f.text_field :description %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :disabled %>:</th>
+      <td><%= f.check_box :disabled %></td>
     </tr>
   </table>
   <div class="actions">

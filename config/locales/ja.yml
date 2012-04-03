@@ -22,6 +22,7 @@ ja:
         name: 名前
         order_class: 整列優先度
         description: 説明
+        disabled: 無効化
   flash:
     actions:
       create:

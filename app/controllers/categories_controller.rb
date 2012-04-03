@@ -36,14 +36,16 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.xml
   def update
+    params[:category].try(:delete, :name)
     @category = Category.find(params[:id])
     @category.update_attributes(params[:category])
-    respond_with(@category)
+    respond_with @category, :location => categories_path
   end
 
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy
+    return redirect_to categories_path # disable delete
     @category = Category.find(params[:id])
     @category.destroy
     respond_with(@category)

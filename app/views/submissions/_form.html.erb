@@ -2,7 +2,7 @@
   <table class="submission-detail">
     <tr>
       <th><%= f.label :category %>:</th>
-      <td><%= f.collection_select :category_id, Category.all, :id, :name_with_desc, :prompt => true %></td>
+      <td><%= f.collection_select :category_id, Category.available, :id, :name_with_desc, :prompt => true %></td>
     </tr>
     <tr>
       <th><%= f.label :title %>:</th>
