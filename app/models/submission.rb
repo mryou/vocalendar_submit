@@ -26,6 +26,7 @@ class Submission < ActiveRecord::Base
   STATUS_ID_NAME_MAP = {1 => :new, 2 => :accepted, 3 => :rejected, 4 => :spam}
   STATUS_NAME_ID_MAP = STATUS_ID_NAME_MAP.invert
   @@status_id_by_name = Struct.new(*STATUS_ID_NAME_MAP.values).new(*STATUS_ID_NAME_MAP.keys)
+  @@status_name_by_id = Struct.new(*STATUS_ID_NAME_MAP.keys.map{|k|k.to_s.to_sym}).new(*STATUS_ID_NAME_MAP.values)
   @@status_collection = STATUS_ID_NAME_MAP.map do |k, v|
     Struct.new(:id, :name, :human_name).new(k, v, I18n.t("status_names.#{v}"))
   end
@@ -33,6 +34,10 @@ class Submission < ActiveRecord::Base
   class << self
     def status
       @@status_id_by_name
+    end
+
+    def status_id
+      @@status_name_by_id
     end
 
     def statuses

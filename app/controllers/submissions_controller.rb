@@ -10,6 +10,10 @@ class SubmissionsController < ApplicationController
   def list
     @submissions = Submission.reorder('created_at desc')
       .paginate :page => params[:page], :per_page => 50
+    params[:category_id] and
+      @submissions = @submissions.where(:category_id => params[:category_id])
+    params[:status_id] and
+      @submissions = @submissions.where(:status_id => params[:status_id])
     respond_with @submissions
   end
 

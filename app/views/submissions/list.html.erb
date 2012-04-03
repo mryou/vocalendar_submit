@@ -1,7 +1,14 @@
 <%-
 time_fmt = "%Y-%m-%d %H:%M:%S"
 -%>
-<h2>登録申請の一覧</h2>
+<h2>登録申請の一覧
+<% if params[:category_id] %>
+  (<%= Category.find(params[:category_id]).try(:name) %>)
+<% end %>
+<% if params[:status_id] %>
+  (<%= I18n.t("status_names.#{Submission.status_id[params[:status_id]]}") %>)
+<% end %>
+</h2>
 
 <table class="general-hor">
   <thead>
@@ -18,11 +25,12 @@ time_fmt = "%Y-%m-%d %H:%M:%S"
 <% @submissions.each do |sub| %>
     <tr>
       <td><%= link_to "##{sub.id}", sub %></td>
-      <td><%= sub.category_name %></td>
+      <td><%= link_to_if sub.category_id, sub.category_name, :category_id => sub.category_id %></td>
       <td><%= link_to sub.title, sub %></td>
       <td><%= sub.created_at.strftime(time_fmt) %></td>
       <td><%= sub.accepted_at.try(:strftime, time_fmt) %></td>
-      <td><%= sub.human_status %></td>
+      <td class="status status-<%= sub.status %>">
+          <%= link_to sub.human_status, :status_id => sub.status_id %></td>
     </tr>
 <% end %>
   </tbody>
