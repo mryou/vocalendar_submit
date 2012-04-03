@@ -16,6 +16,7 @@ ja:
         updated_at: 更新日時
         accepted_at: 処理日時
         category: カテゴリ
+        category_id: カテゴリ
         category_name: カテゴリ
         url: URL
       category:
