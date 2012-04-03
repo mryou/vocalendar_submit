@@ -10,29 +10,6 @@ time_fmt = "%Y-%m-%d %H:%M:%S"
 <% end %>
 </h2>
 
-<table class="general-hor">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th><%= Submission.human_attribute_name :category_name %></th>
-      <th><%= Submission.human_attribute_name :title %></th>
-      <th><%= Submission.human_attribute_name :created_at %></th>
-      <th><%= Submission.human_attribute_name :accepted_at %></th>
-      <th><%= Submission.human_attribute_name :status %></th>
-    </tr>
-  </thead>
-  <tbody>
-<% @submissions.each do |sub| %>
-    <tr>
-      <td><%= link_to "##{sub.id}", sub %></td>
-      <td><%= link_to_if sub.category_id, sub.category_name, :category_id => sub.category_id %></td>
-      <td><%= link_to sub.title, sub %></td>
-      <td><%= sub.created_at.strftime(time_fmt) %></td>
-      <td><%= sub.accepted_at.try(:strftime, time_fmt) %></td>
-      <td class="status status-<%= sub.status %>">
-          <%= link_to sub.human_status, :status_id => sub.status_id %></td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+<%= render_list @submissions, :enable_filter_link => true, :datetime_format => "%Y-%m-%d %H:%M:%S" %>
+
 <%= will_paginate @submissions %>

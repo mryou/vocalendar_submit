@@ -7,26 +7,8 @@
 <% if !@new_subs.blank? %>
 <h3>登録処理待ちのイベント</h3>
 
-<table class="general-hor">
- <thead>
-  <tr>
-    <th>ID</th>
-    <th><%= Submission.human_attribute_name :category_name %></th>
-    <th><%= Submission.human_attribute_name :title %></th>
-    <th><%= Submission.human_attribute_name :created_at %></th>
-  </tr>
- </thead>
- <tbody>
-<% @new_subs.each do |sub| %>
-  <tr>
-    <td><%= link_to "##{sub.id}", sub %></td>
-    <td><%= sub.category_name %></td>
-    <td><%= link_to sub.title, sub %></td>
-    <td><%= sub.created_at.strftime("%m/%d %H:%M") %></td>
-  </tr>
-<% end %>
-  </tbody>
-</table>
+<%= render_list @new_subs, :columns => [:id, :category, :title, :created_at] %>
+
 <%= will_paginate @new_subs %>
 <% end %>
 
@@ -34,26 +16,4 @@
 <p>
 ※ここから登録されたものだけが表示されています。
 </p>
-
-<table class="general-hor">
- <thead>
-  <tr>
-    <th>ID</th>
-    <th><%= Submission.human_attribute_name :category_name %></th>
-    <th><%= Submission.human_attribute_name :title %></th>
-    <th><%= Submission.human_attribute_name :created_at %></th>
-    <th><%= Submission.human_attribute_name :accepted_at %></th>
-  </tr>
- </thead>
- <tbody>
-<% @accepted_subs.each do |sub| %>
-  <tr>
-    <td><%= link_to "##{sub.id}", sub %></td>
-    <td><%= sub.category_name %></td>
-    <td><%= link_to sub.title, sub %></td>
-    <td><%= sub.created_at.strftime("%m/%d %H:%M") %></td>
-    <td><%= sub.accepted_at.try(:strftime, "%m/%d %H:%M") %></td>
-  </tr>
-<% end %>
-  </tbody>
-</table>
+<%= render_list @accepted_subs, :columns => [:id, :category, :title, :created_at, :accepted_at] %>

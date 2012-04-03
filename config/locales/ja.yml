@@ -12,6 +12,8 @@ ja:
         where: 場所
         description: 説明
         status: ステータス
+        status_id: ステータス
+        human_status: ステータス
         created_at: 申請日時
         updated_at: 更新日時
         accepted_at: 処理日時

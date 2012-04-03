@@ -69,11 +69,13 @@ table.general-hor {
 }
 
 a { text-decoration: none; }
+a:hover { text-decoration: underline; }
 
 .status {
-  a, a:hover, a:visited, a:active { color: inherit; background-color: inherit;}
+  a:hover, a:visited, a:active { background-color: inherit;}
 }
 
-.status-new { color: #ED943D }
-.status-rejected { color: #7F1C84 }
-.status-spam { color: #84511C }
+.status-new, .status-new:hover, .status-new:visited { color: #ED943D }
+.status-accepted, .status-accepted:hover, .status-accepted:visited { color: inherit; }
+.status-rejected, .status-rejected:hover, .status-rejected:visited { color: #7F1C84 }
+.status-spam, .status-spam:hover, .status-spam:visited { color: #84511C }

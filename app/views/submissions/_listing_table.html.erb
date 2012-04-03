@@ -1,0 +1,41 @@
+<table class="general-hor list-submissons">
+ <thead>
+  <tr>
+    <% columns.each do |col| %>
+      <th class="<%= col %>"><%= Submission.human_attribute_name col %></th>
+    <% end %>
+  </tr>
+ </thead>
+ <tbody>
+<% target_subs.each do |sub| %>
+  <tr>
+    <% columns.each do |col| %>
+      <td class="<%= col %>">
+        <% case col.to_sym %>
+        <% when :id  %>
+          <%= link_to "##{sub.id}", sub %>
+        <% when :title %>
+          <%= link_to sub.title, sub %>
+        <% when :updated_at, :created_at, :accepted_at %>
+          <%= sub.__send__(col).try(:strftime, datetime_format) %>
+        <% when :status, :human_status, :status_id %>
+          <% if enable_filter_link %>
+             <%= link_to sub.human_status, {:status_id => sub.status_id}, :class => "status status-#{sub.status}" %>
+          <% else %>
+             <span class="status status-<%= sub.status %>"><%= sub.human_status %></span>
+          <% end %>
+        <% when :category, :category_name, :category_id %>
+          <% if enable_filter_link %>
+            <%= link_to_if sub.category_id, sub.category_name, :category_id => sub.category_id %>
+          <% else %>
+            <%= sub.category_name %>
+          <% end %>
+        <% else %>
+          <%= sub.__send__ col %>
+        <% end %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>
+  </tbody>
+</table>

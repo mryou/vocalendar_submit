@@ -26,4 +26,14 @@ module SubmissionsHelper
     url = urlbase + attrs.map{|k, v| "#{k}=#{CGI.escape(v)}"}.join('&')
     link_to 'Googleカレンダーの編集画面を開く', url, :class => 'action-button main-action add-google-cal', :target => '_blank'
   end
+
+  def render_list(subs, opts = {})
+    opts = {
+      :columns => [:id, :category, :title, :created_at, :accepted_at, :status],
+      :datetime_format => "%m/%d %H:%M",
+      :enable_filter_link => false,
+      :target_subs => subs,
+    }.merge opts
+    render :partial => 'listing_table', :locals => opts
+  end
 end
