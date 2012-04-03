@@ -42,6 +42,11 @@ class SubmissionsControllerTest < ActionController::TestCase
   end
 
   test "should destroy submission" do
+    # disable original feature
+    delete :destroy, id: @submission
+    assert_redirected_to submissions_path
+    break
+
     assert_difference('Submission.count', -1) do
       delete :destroy, id: @submission
     end

@@ -37,20 +37,21 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(params[:submission])
     @submission.save
-    respond_with @submission, :location => {:action => 'index'}
+    respond_with @submission, :location => submissions_path
   end
 
   # PUT /submissions/1
   # PUT /submissions/1.json
   def update
     @submission = Submission.find(params[:id])
-    @submission.update_attributes(params[:submission])
+    @submission.update_attributes(params[:submission].select{|k, v| %w(status_id).member? k})
     respond_with @submission
   end
 
   # DELETE /submissions/1
   # DELETE /submissions/1.json
   def destroy
+    return redirect_to submissions_path # disable delete
     @submission = Submission.find(params[:id])
     @submission.destroy
     respond_with @submission
