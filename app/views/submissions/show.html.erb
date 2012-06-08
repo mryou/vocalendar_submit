@@ -53,21 +53,43 @@
 
 
 <% if @submission.status == :new %>
-  <p><%= gcal_add_button(@submission) %></p>
+<div class="btn-group btn-inline">
+<a class="btn dropdown-toggle" data-toggle="dropdown">
+カレンダーの編集画面を開く
+<span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+<% Rails.configuration.private_calendar_ids.each do |name, cid| %>
+<li><%= gcal_add_link @submission, name, :src => cid %></li>
+<% end %>
+</ul>
+</div>
 <% end %>
 
-  <%- date = @submission.start_date.strftime("%Y%m%d") %>
-  <p>各カレンダーのこの日付を開く:
-  <%= link_to '自分のGoogleカレンダー',
+<%- date = @submission.start_date.strftime("%Y%m%d") %>
+<div class="btn-group btn-inline">
+<a class="btn dropdown-toggle" data-toggle="dropdown">
+カレンダーのこの日付を開く
+<span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+<% Rails.configuration.private_calendar_ids.each do |name, cid| %>
+<li><%= link_to "#{name} (編集版)",
+      "http://www.google.com/calendar/embed?src=#{CGI.escape(cid)}&dates=#{date}/#{date}&mode=WEEK",
+      :target => 'calwin' %></li>
+<% end %>
+<li class="divider"></li>
+<% Rails.configuration.public_calendar_ids.each do |name, cid| %>
+<li><%= link_to "#{name} (公開版)",
+      "http://www.google.com/calendar/embed?src=#{CGI.escape(cid)}&dates=#{date}/#{date}&mode=WEEK",
+      :target => 'calwin' %></li>
+<% end %>
+<li class="divider"></li>
+<li><%= link_to '自分のGoogleカレンダー',
       "http://www.google.com/calendar/render?date=#{date}",
-      :class => 'action-button', :target => 'calwin' %>
-  <%= link_to '公開版VOCALENDAR', 
-      "http://www.google.com/calendar/embed?src=#{CGI.escape(Rails.configuration.public_calendar_id)}&dates=#{date}/#{date}&mode=WEEK",
-      :class => 'action-button', :target => 'calwin' %>
-  <%= link_to '編集版VOCALENDAR', 
-      "http://www.google.com/calendar/embed?src=#{CGI.escape(Rails.configuration.private_calendar_id)}&dates=#{date}/#{date}&mode=WEEK",
-      :class => 'action-button', :target => 'calwin' %>
-  </p>
-
+      :target => 'calwin' %>
+</li>
+</ul>
+</div>
 
 <%= link_to '一覧に戻る', submissions_path, :class => 'action-button' %>

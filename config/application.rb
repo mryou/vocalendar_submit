@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -60,8 +61,14 @@ module VocalendarSubmit
     config.i18n.default_locale = :ja
 
     # app specific settings
-    config.public_calendar_id = '0mprpb041vjq02lk80vtu6ajgo@group.calendar.google.com'
-    config.private_calendar_id = 'pcg8ct8ulj96ptvqhllgcc181o@group.calendar.google.com'
+    config.public_calendar_ids = {
+      'メイン' => '0mprpb041vjq02lk80vtu6ajgo@group.calendar.google.com',
+      '放送系' => '5fsoru1dfaga56mcleu5mp76kk@group.calendar.google.com',
+    }
+    config.private_calendar_ids = {
+      'メイン' => 'pcg8ct8ulj96ptvqhllgcc181o@group.calendar.google.com',
+      '放送系' => '5fsoru1dfaga56mcleu5mp76kk@group.calendar.google.com', # TODO: change to private calendar ID
+    }
 
   end
 end

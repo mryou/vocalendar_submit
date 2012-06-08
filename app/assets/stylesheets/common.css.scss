@@ -79,3 +79,8 @@ a:hover { text-decoration: underline; }
 .status-accepted, .status-accepted:hover, .status-accepted:visited { color: inherit; }
 .status-rejected, .status-rejected:hover, .status-rejected:visited { color: #7F1C84 }
 .status-spam, .status-spam:hover, .status-spam:visited { color: #84511C }
+
+.btn-inline {
+  display: inline-block;
+  vertical-align: bottom;
+}
