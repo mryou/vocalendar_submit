@@ -67,7 +67,7 @@ module VocalendarSubmit
     }
     config.private_calendar_ids = {
       'メイン' => 'pcg8ct8ulj96ptvqhllgcc181o@group.calendar.google.com',
-      '放送系' => '5fsoru1dfaga56mcleu5mp76kk@group.calendar.google.com', # TODO: change to private calendar ID
+      '放送系' => '3me94hk19746qv5d57qj0j61cc@group.calendar.google.com',
     }
 
   end
