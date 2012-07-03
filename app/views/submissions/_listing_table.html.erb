@@ -13,9 +13,9 @@
       <td class="<%= col %>">
         <% case col.to_sym %>
         <% when :id  %>
-          <%= link_to "##{sub.id}", sub %>
+          <%= link_to "##{sub.id}", :controller => 'submissions', :id => sub.id, :action => item_link_action %>
         <% when :title %>
-          <%= link_to sub.title, sub %>
+          <%= link_to sub.title, :controller => 'submissions', :id => sub.id, :action => item_link_action %>
         <% when :updated_at, :created_at, :accepted_at %>
           <%= sub.__send__(col).try(:strftime, datetime_format) %>
         <% when :status, :human_status, :status_id %>

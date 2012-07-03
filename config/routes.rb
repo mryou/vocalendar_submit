@@ -7,6 +7,8 @@ VocalendarSubmit::Application.routes.draw do
     end
   end
 
+  match 'admin' => 'submissions#list'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

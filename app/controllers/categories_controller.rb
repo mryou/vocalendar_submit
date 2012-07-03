@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_filter :set_variable
+
   # GET /categories
   # GET /categories.xml
   def index
@@ -49,5 +51,10 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
     respond_with(@category)
+  end
+
+  private
+  def set_variable
+    @show_admin_menu = true
   end
 end

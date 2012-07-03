@@ -55,7 +55,7 @@ h1#main-title {
 .submission-detail, .category-detail {
   border: none;
   td, th { border: none; }
-  th { text-align: right; vertical-align: top; }
+  th { text-align: right; vertical-align: top; white-space: nowrap; font-weight: bold; }
 }
 
 table.general-hor {
@@ -83,4 +83,7 @@ a:hover { text-decoration: underline; }
 .btn-inline {
   display: inline-block;
   vertical-align: bottom;
+}
+.main-submit-button {
+  text-align: center;
 }

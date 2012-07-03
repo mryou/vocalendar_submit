@@ -2,7 +2,9 @@
     VOCALENDAR に登録したいイベントはありませんか？
 </p>
 
-<%= button_to 'イベントを登録', new_submission_path, :method => :get %>
+<p class="main-submit-button">
+<%= link_to '<i class="icon-pencil icon-white"></i>イベントを登録'.html_safe, new_submission_path, :method => :get, :class => 'btn btn-large btn-primary' %>
+</p>
 
 <% if !@new_subs.blank? %>
 <h3>登録処理待ちのイベント</h3>

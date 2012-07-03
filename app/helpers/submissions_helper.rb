@@ -33,6 +33,7 @@ module SubmissionsHelper
       :datetime_format => "%m/%d %H:%M",
       :enable_filter_link => false,
       :target_subs => subs,
+      :item_link_action => 'show',
     }.merge opts
     render :partial => 'listing_table', :locals => opts
   end

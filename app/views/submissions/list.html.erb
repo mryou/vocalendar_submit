@@ -10,6 +10,6 @@ time_fmt = "%Y-%m-%d %H:%M:%S"
 <% end %>
 </h2>
 
-<%= render_list @submissions, :enable_filter_link => true, :datetime_format => "%Y-%m-%d %H:%M:%S" %>
+<%= render_list @submissions, :enable_filter_link => true, :datetime_format => "%Y-%m-%d %H:%M:%S", :item_link_action => 'edit' %>
 
 <%= will_paginate @submissions %>

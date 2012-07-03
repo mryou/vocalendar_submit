@@ -8,6 +8,7 @@ class SubmissionsController < ApplicationController
   end
 
   def list
+    @show_admin_menu = true
     @submissions = Submission.reorder('created_at desc')
       .paginate :page => params[:page], :per_page => 50
     params[:category_id] and
@@ -33,6 +34,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/1/edit
   def edit
+    @show_admin_menu = true
     @submission = Submission.find(params[:id])
   end
 
