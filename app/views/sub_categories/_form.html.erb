@@ -1,22 +1,22 @@
-<%= form_for @category, :html => {:class => 'new_category form-inline'} do |f| %>
+<%= form_for @sub_category, :html => {:class => 'new_sub_category form-inline'} do |f| %>
   <table class="category-detail">
     <tr>
       <th><%= f.label :name %>:</th>
       <td>
-        <% if @category.new_record? %>
+        <% if @sub_category.new_record? %>
         <%= f.text_field :name %> ※一度決定すると変更できません
         <% else %>
-        <%= @category.name %>
+        <%= @sub_category.name %>
         <% end %>
       </td>
     </tr>
     <tr>
-      <th><%= f.label :order_class %>:</th>
-      <td><%= f.text_field :order_class %></td>
+      <th><%= f.label :group_id %>:</th>
+      <td><%= f.text_field :group_id %></td>
     </tr>
     <tr>
-      <th><%= f.label :sub_category_group_id %>:</th>
-      <td><%= f.collection_select :sub_category_group_id, SubCategory.group(:group_id), :group_id, :group_id, :include_blank => true %></td>
+      <th><%= f.label :order_class %>:</th>
+      <td><%= f.text_field :order_class %></td>
     </tr>
     <tr>
       <th><%= f.label :description %>:</th>

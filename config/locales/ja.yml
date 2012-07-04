@@ -20,6 +20,11 @@ ja:
         category: カテゴリ
         category_id: カテゴリ
         category_name: カテゴリ
+        full_category: カテゴリ
+        full_category_name: カテゴリ
+        sub_category: サブカテゴリ
+        sub_category_id: サブカテゴリ
+        sub_category_name: サブカテゴリ
         url: URL
       category:
         name: 名前

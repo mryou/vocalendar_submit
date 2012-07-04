@@ -5,6 +5,10 @@
   order_class: 100
 - name: クラブ
   order_class: 100
+- name: キャンペーン
+  order_class: 100
+- name: セミナー
+  order_class: 100
 - name: イベント
   description: ライブ・オフ以外の催事
   order_class: 101
@@ -15,33 +19,41 @@
 - name: CD
   order_class: 110
   description: CD発売情報
-- name: DVD
-  order_class: 110
-  description: DVD発売情報
-- name: BD
-  order_class: 110
-  description: BD発売情報 
 - name: BD/DVD
   order_class: 110
-  description: DVDなど発売情報 
+  description: DB ,DVDなど発売情報 
 - name: EP
   order_class: 110
 - name: FIG
   order_class: 110
   description: フィギュア・あるいはそれに準ずるもの
+- name: GAME
+  order_class: 110
+- name: 書籍
+  order_class: 110
 - name: グッズ
   order_class: 111
   description: 他に分類されないグッズ発売情報 
 - name: ニコ動
-  order_class: 120
+  order_class: 200
+  sub_category_group_id: 1
 - name: ニコ生
-  order_class: 120
+  order_class: 200
+  sub_category_group_id: 1
 - name: UST
-  order_class: 120
+  order_class: 200
+  sub_category_group_id: 1
 - name: ラジオ
-  order_class: 130
+  order_class: 200
+  sub_category_group_id: 1
+- name: ネトラジ
+  order_class: 200
+  sub_category_group_id: 1
 - name: TV
-  order_class: 130
+  order_class: 200
+  sub_category_group_id: 1
   description: ボカロ関連放送（地上波/BS/CS）
+  sub_category_group_id: 1
 - name: その他
   order_class: 9000
+  description: その他分類不明な場合など

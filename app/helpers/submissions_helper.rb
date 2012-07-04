@@ -29,7 +29,7 @@ module SubmissionsHelper
 
   def render_list(subs, opts = {})
     opts = {
-      :columns => [:id, :category, :title, :created_at, :accepted_at, :status],
+      :columns => [:id, :full_category, :title, :created_at, :accepted_at, :status],
       :datetime_format => "%m/%d %H:%M",
       :enable_filter_link => false,
       :target_subs => subs,

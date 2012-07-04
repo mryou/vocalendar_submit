@@ -16,3 +16,12 @@ cats.each do |cat|
     Category.create! cat
   end
 end
+
+subcats = YAML.load_file "#{Rails.root}/db/seed_data/sub_categories.yml"
+subcats.each do |subcat|
+  if sc = SubCategory.where(:name => subcat['name'], :group_id => subcat['group_id']).first
+    sc.update_attributes! subcat
+  else
+    SubCategory.create! subcat
+  end
+end

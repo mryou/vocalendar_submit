@@ -11,33 +11,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403101742) do
+ActiveRecord::Schema.define(:version => 20120703185926) do
 
   create_table "categories", :force => true do |t|
-    t.string   "name",                           :null => false
-    t.integer  "order_class", :default => 200,   :null => false
+    t.string   "name",                                     :null => false
+    t.integer  "order_class",           :default => 200,   :null => false
     t.text     "description"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "disabled",    :default => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.boolean  "disabled",              :default => false
+    t.integer  "sub_category_group_id"
   end
 
   add_index "categories", ["name"], :name => "index_categories_on_name", :unique => true
   add_index "categories", ["order_class", "name"], :name => "index_categories_on_order_class_and_name"
 
+  create_table "sub_categories", :force => true do |t|
+    t.string   "name",                           :null => false
+    t.text     "description"
+    t.integer  "group_id",    :default => 1,     :null => false
+    t.integer  "order_class", :default => 200,   :null => false
+    t.boolean  "disabled",    :default => false, :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "sub_categories", ["group_id"], :name => "index_sub_categories_on_group_id"
+
   create_table "submissions", :force => true do |t|
-    t.string   "title",          :default => "",    :null => false
-    t.datetime "start_datetime",                    :null => false
-    t.datetime "end_datetime",                      :null => false
-    t.boolean  "all_day",        :default => false, :null => false
+    t.string   "title",           :default => "",    :null => false
+    t.datetime "start_datetime",                     :null => false
+    t.datetime "end_datetime",                       :null => false
+    t.boolean  "all_day",         :default => false, :null => false
     t.text     "where"
-    t.text     "description",    :default => ""
-    t.integer  "status_id",      :default => 1,     :null => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.text     "description",     :default => ""
+    t.integer  "status_id",       :default => 1,     :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.datetime "accepted_at"
     t.integer  "category_id"
     t.text     "url"
+    t.integer  "sub_category_id"
   end
 
   add_index "submissions", ["accepted_at", "status_id"], :name => "index_submissions_on_accepted_at_and_status_id"

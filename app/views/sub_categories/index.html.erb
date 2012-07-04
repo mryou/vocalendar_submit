@@ -1,0 +1,27 @@
+<h1>サブカテゴリ一覧</h1>
+
+<table class="general-hor">
+  <tr>
+    <th><%= SubCategory.human_attribute_name :name %></th>
+    <th><%= SubCategory.human_attribute_name :group_id %></th>
+    <th><%= SubCategory.human_attribute_name :order_class %></th>
+    <th><%= SubCategory.human_attribute_name :description %></th>
+  </tr>
+
+<% @sub_categories.each do |category| %>
+  <tr>
+    <td>
+        <% if category.disabled? %><del><%end %>
+        <%= link_to category.name, edit_sub_category_path(category) %>
+        <% if category.disabled? %></del><%end %>
+      </td>
+    <td><%= category.group_id %></td>
+    <td><%= category.order_class %></td>
+    <td><%= category.description%></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'サブカテゴリの新規作成', new_sub_category_path, :class => 'btn' %>

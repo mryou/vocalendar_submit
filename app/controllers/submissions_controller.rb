@@ -62,4 +62,12 @@ class SubmissionsController < ApplicationController
     @submission.destroy
     respond_with @submission
   end
+
+  def subcat_select
+    subcats = []
+    if cat = Category.find_by_id(params[:category_id])
+      subcats = cat.sub_categories || []
+    end
+    render :partial => 'subcat_select', :locals => {:subcats => subcats}
+  end
 end

@@ -1,0 +1,3 @@
+<% if !subcats.blank? %>
+<%= collection_select :submission, :sub_category_id, subcats, :id, :name_with_desc, {}, :class => 'input-xlarge' %>
+<% end %>

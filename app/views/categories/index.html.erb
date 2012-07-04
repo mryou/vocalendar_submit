@@ -4,6 +4,7 @@
   <tr>
     <th><%= Category.human_attribute_name :name %></th>
     <th><%= Category.human_attribute_name :order_class %></th>
+    <th><%= Category.human_attribute_name :sub_category_group_id %></th>
     <th><%= Category.human_attribute_name :description %></th>
   </tr>
 
@@ -15,6 +16,7 @@
         <% if category.disabled? %></del><%end %>
       </td>
     <td><%= category.order_class %></td>
+    <td><%= category.sub_category_group_id %></td>
     <td><%= category.description%></td>
   </tr>
 <% end %>

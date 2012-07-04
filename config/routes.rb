@@ -1,9 +1,11 @@
 VocalendarSubmit::Application.routes.draw do
   resources :categories
+  resources :sub_categories
 
   resources :submissions do
     collection do
       get 'list' => 'submissions#list'
+      get 'subcat_select' => 'submissions#subcat_select'
     end
   end
 

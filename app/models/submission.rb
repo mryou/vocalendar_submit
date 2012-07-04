@@ -3,6 +3,7 @@ class Submission < ActiveRecord::Base
   include Nemui::Utils
 
   belongs_to :category
+  belongs_to :sub_category
 
   before_validation :set_end_datetime
   before_validation :clear_time_when_all_day
@@ -16,12 +17,13 @@ class Submission < ActiveRecord::Base
   validates :category_id, :presence => true
   validate :check_url
   validate :check_valid_end_datetime
+  validate :check_sub_category
 
   attr_accessible :title, :where, :description, :url,
     :start_datetime, :start_date, :start_time,
     :end_datetime, :end_date, :end_time,
-    :category_id, :category_name, :status_id, :all_day
-    
+    :category_id, :category_name, :status_id, :all_day,
+    :sub_category_id
 
   STATUS_ID_NAME_MAP = {1 => :new, 2 => :accepted, 3 => :rejected, 4 => :spam}
   STATUS_NAME_ID_MAP = STATUS_ID_NAME_MAP.invert
@@ -51,6 +53,16 @@ class Submission < ActiveRecord::Base
   end
   attr_accessor :need_accepted_at
   alias_method :need_accepted_at?, :need_accepted_at
+
+  def full_category_name
+    c = self.category.try(:name)
+    s = self.sub_category.try(:name)
+    s ? [c, s].join("/") : c
+  end
+
+  def sub_category_name
+    self.sub_category.try(:name)
+  end
 
   def category_name
     self.category.try(:name)
@@ -168,6 +180,19 @@ class Submission < ActiveRecord::Base
     self.url.strip.blank? and return
     %r{^https?://[a-zA-Z0-9_]+\.}.match(url) and return
     errors.add :url, "が正しくありません"
+  end
+
+  def check_sub_category
+    cat = Category.find_by_id(self.category_id) or return
+    cat.sub_categories.length < 1 and return
+    if self.sub_category_id.blank?
+      errors.add :sub_category_id, "を選択して下さい"
+      return
+    end
+    cat.sub_categories.each do |sc|
+      self.sub_category_id == sc.id and return
+    end
+    errors.add :sub_category_id, "が正しくありません"
   end
 
   def set_accepted_at

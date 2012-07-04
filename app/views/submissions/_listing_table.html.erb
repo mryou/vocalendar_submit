@@ -24,6 +24,15 @@
           <% else %>
              <span class="status status-<%= sub.status %>"><%= sub.human_status %></span>
           <% end %>
+        <% when :full_category, :full_category_name %>
+          <% if enable_filter_link %>
+            <%= link_to_if sub.category_id, sub.category_name, :category_id => sub.category_id %>
+            <% if sub.sub_category %>
+               /<%= sub.sub_category_name %>
+            <% end %>
+          <% else %>
+            <%= sub.full_category_name %>
+          <% end %>
         <% when :category, :category_name, :category_id %>
           <% if enable_filter_link %>
             <%= link_to_if sub.category_id, sub.category_name, :category_id => sub.category_id %>
