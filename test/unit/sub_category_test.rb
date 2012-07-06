@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class SubCategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "simple save" do
+    sc = sub_categories(:one)
+    assert sc.save, "simple save failed: #{sc.errors.inspect}"
+  end
 end
