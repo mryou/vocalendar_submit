@@ -58,6 +58,7 @@ GEM
       rails (>= 3.0.0)
     mime-types (1.19)
     multi_json (1.3.6)
+    mysql2 (0.3.11)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -120,6 +121,7 @@ DEPENDENCIES
   exception_notification
   jquery-rails
   message_block
+  mysql2
   rails (< 3.3.0)
   rails-i18n
   responders
