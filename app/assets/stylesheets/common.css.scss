@@ -1,19 +1,14 @@
 body { padding: 0; margin: 0; }
 #wrapper { position: relative; padding: 1em; }
+
 #main-content {
-  max-width: 800px;
-  min-width: 500px;
-  margin: 0 auto;
-  border: 1px solid #ddd;
-  padding: 0 2em 2em 2em;
-  background-color: #fafafa;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  $shadow: 2px 2px 5px 6px rgba(208, 208, 208, 0.4);
-  -moz-box-shadow: $shadow;
-  -webkit-box-shadow: $shadow;
-  box-shadow: $shadow;
+  position: relative;
+  display: block;
+  margin: 20px 20px;
+  padding: 40px;
+  background-color: #fcfcf9;
+  border: 1px solid #c7c2b4;
+  box-shadow: 0px 0px 10px #ccc;
 }
 
 #header-menu {
@@ -86,4 +81,113 @@ a:hover { text-decoration: underline; }
 }
 .main-submit-button {
   text-align: center;
+}
+
+
+/*** 登録フォームCSS ***/
+#vocalendar_eventform {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 2px solid rgb(218,218,218);
+  background-image: url(http://vocalendar.jp/images/vocalendar-submit-illust.jpg);
+  background-position: right bottom;
+}
+.VEPforms {
+  background-color: white;
+}
+.VEPforms th,
+.VEPforms td {
+  text-align: left;
+  height: 3em;
+  padding: 0 20px;
+  vertical-align: middle;
+  border-bottom: 2px solid rgb(218,218,218);
+}
+.lastrow th,
+.lastrow td {
+  border-bottom: none;
+}
+.VEPforms th {
+  width: 120px;
+  border-right: 2px solid rgb(218,218,218);
+}
+.VEPforms td {
+  border-right: 2px solid rgb(218,218,218);
+}
+.VEPforms label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #8C6900;
+}
+.VEPtextform {
+  background-color: white;
+}
+.VEPtextform input {
+  padding: 0.5em 0em !important;
+  border: none !important;
+  background: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  font-size: 18px !important;
+  color: #666;
+  width: 400px;
+}
+.VEPtextform textarea {
+  margin: 0;
+  padding: 0.5em 0em !important;
+  border: none !important;
+  background: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  font-size: 18px !important;
+  color: #666;
+  width: 400px;
+  resize: none;
+  font-size: 14px !important;
+  line-height: 150%;
+}
+:-ms-input-placeholder { color: #ddd; }
+:-moz-input-placeholder { color: #ddd; }
+::-webkit-input-placeholder { color: #ddd; }
+
+.calendricalDatePopup {
+  width: auto !important;
+}
+.calendricalDatePopup th,
+.calendricalDatePopup td {
+  text-align: left;
+  height: auto;
+  padding: 0;
+  vertical-align: middle;
+  border-bottom: 2px solid rgb(218,218,218);
+}
+.VEPsubmit td {
+  text-align: left;
+  height: 4em;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  border-right: 2px solid rgb(218,218,218);
+background: #40ad1f; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQwYWQxZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMjg5MDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #40ad1f 0%, #228900 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#40ad1f), color-stop(100%,#228900)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #40ad1f 0%,#228900 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #40ad1f 0%,#228900 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #40ad1f 0%,#228900 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #40ad1f 0%,#228900 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40ad1f', endColorstr='#228900',GradientType=0 ); /* IE6-8 */
+}
+#VEPsubmitBtn {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0px;
+  background: none !important;
+  border: none;
+  font-size: 20px;
 }
