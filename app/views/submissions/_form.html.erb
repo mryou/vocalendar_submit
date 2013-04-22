@@ -1,64 +1,66 @@
 <%= form_for @submission, :html => {:class => 'new_submission form-inline'} do |f| %>
 
+<% if @submission.errors.any? %>
+<% @submission.errors.full_messages.earh do |msg| %>
+  <p><%= msg %></p>
+<% end %>
+<% end %>
 
-<table id="vocalendar_eventform">
-
-<!-- カテゴリ入力 //-->
-<tr class="VEPforms">
-<th><%= f.label :category %></th>
-<td><%= f.collection_select :category_id, Category.available, :id, :name_with_desc, {:prompt => true},  :class => 'input-xlarge dropkick' %></td>
-</tr>
-<tr class="VEPforms">
-<th><%= f.label :sub_category %></th>
-<td id="subcat-select-container"></td>
-</tr>
-
-<!-- イベントタイトル //-->
-<tr class="VEPforms">
-<th><%= f.label :title %></th>
-<td class="VEPtextform"><%= f.text_field :title, :size => 40, :class => 'input-xlarge focused', :placeholder => 'イベントタイトルを入力してください。' %></td>
-</tr>
-
-
-<tr class="VEPforms">
-<th><%= f.label :start_datetime %></th>
-<td><%= f.text_field :start_date, :size => 10, :class => 'input-small' %>
-<%= f.text_field :start_time, :size => 7, :class => 'input-mini' %></td>
-</tr>
-<tr class="VEPforms">
-<th><%= f.label :end_datetime %></th>
-<td><%= f.text_field :end_date, :size => 10, :class => 'input-small' %>
-<%= f.text_field :end_time, :size => 7, :class => 'input-mini' %></td>
-</tr>
-<tr class="VEPforms">
-<th><label>全日イベント</label></th>
-<td><%= f.check_box :all_day %><%= f.label :all_day %></td>
-</tr>
-
-<!-- 場所 //-->
-<tr class="VEPforms">
-<th><%= f.label :where %></th>
-<td class="VEPtextform"><%= f.text_field :where, :class => 'input-xlarge', :placeholder => '場所の名前や住所を記入します（空白可）' %></td>
-</tr>
-
-<tr class="VEPforms">
-<th><%= f.label :description %></th>
-<td class="VEPtextform"><%= f.text_area :description, :rows => 7, :class => 'input-xlarge' %></td>
-</tr>
-
-<tr class="VEPforms">
-<th><%= f.label :url %></th>
-<td class="VEPtextform"><%= f.text_field :url, :class => 'input-xlarge', :placeholder => '1次情報のURLがあれば入力して下さい' %>
-</tr>
-
-<tr class="VEPsubmit lastrow">
-<td colspan="2">
-<%= f.submit :class => 'btn btn-primary', :id => 'VEPsubmitBtn' %>
-</td>
-</tr>
+<dl>
+	<!-- カテゴリ入力 //-->
+	<dt><%= f.label :category %></dt>
+	<dd>
+		<%= f.collection_select :category_id, Category.available, :id, :name_with_desc, {:prompt => true}   %>
+	</dd>
+</dl>
+<dl>
+	<dt><%= f.label :sub_category %></dt>
+	<dd id="subcat-select-container">
+		&nbsp;
+	</dd>
+</dl>
+<dl>
+	<!-- イベントタイトル //-->
+	<dt><%= f.label :title %><span class="required-mark">*</span></dt>
+	<dd>
+		<%= f.text_field :title, :size => 40,:class =>'wide', :placeholder => 'イベントタイトルを入力してください。' %>
+	</dd>
+</dl>
+<dl>
+	<dt><%= f.label :start_datetime %></dt>
+	<dd><%= f.text_field :start_date, :size => 10, :class => 'input-small' %> <%= f.text_field :start_time, :size => 7, :class => 'input-mini' %>
+	</dd>
+</dl>
+<dl>
+	<dt><%= f.label :end_datetime %></dt>
+	<dd><%= f.text_field :end_date, :size => 10, :class => 'input-small' %>
+	<%= f.text_field :end_time, :size => 7, :class => 'input-mini' %>
+	</dd>
+</dl>
+<dl>
+	<dt class='checkbox-conteinar'><label>全日イベント</label></dt>
+	<dd><%= f.check_box :all_day %><%= f.label :all_day %></dd>
+</dl>
+<dl>
+	<!-- 場所 //-->
+	<dt><%= f.label :where %></dt>
+	<dd><%= f.text_field :where, :class => 'wide', :placeholder => '場所の名前や住所を記入します（空白可）' %></dd>
+</dl>
+<dl>
+	<dt><%= f.label :description %></dt>
+	<dd><%= f.text_area :description, :rows => 7, :class => 'input-xlarge' %>
+	</dd>
+</dl>
+<dl>
+	<dt><%= f.label :url %></dt>
+	<dd><%= f.text_field :url, :class => 'wide', :placeholder => '1次情報のURLがあれば入力して下さい' %>
+	</dd>
+</dl>
+<div class='submitbutton'>
+	<%= f.submit :value => '送信', :class => 'regist', :id => 'VEPsubmitBtn' %>
+</div>
 
 
-</table>
 <% end %>
 
 <%= javascript_tag do %>

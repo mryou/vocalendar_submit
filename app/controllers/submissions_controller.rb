@@ -68,6 +68,7 @@ class SubmissionsController < ApplicationController
     if cat = Category.find_by_id(params[:category_id])
       subcats = cat.sub_categories || []
     end
+    pp subcats
     render :partial => 'subcat_select', :locals => {:subcats => subcats}
   end
 end

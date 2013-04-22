@@ -1,3 +1,14 @@
-<%= render 'form' %>
+<section id='leader'>
+<h1>イベント申請フォーム</h1>
+<p>
+以下の情報を入力して下さい。
+<span class="required-mark">*</span> マークは必須です(連絡先はどちらか)。
+</p>
+</section>
 
+<section>
+<%= render 'form' %>
 <%= link_to '一覧に戻る', submissions_path, :class => 'btn' %>
+
+</section>
+

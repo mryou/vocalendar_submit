@@ -12,6 +12,7 @@ $today_border_color:  #DD6;
   padding: 2px;
   text-align: center;
   width: 160px;
+  z-index: 1000;
 
   table {
     border-collapse: collapse;
@@ -39,7 +40,7 @@ $today_border_color:  #DD6;
     th {
       text-align: center;
     }
-    
+
     td {
       text-align: center;
       font-size: 12px;
@@ -78,6 +79,7 @@ $today_border_color:  #DD6;
   width: 110px;
   height: 130px;
   overflow: auto;
+  z-index: 1000;
   ul {
     margin: 0;
     padding: 0;

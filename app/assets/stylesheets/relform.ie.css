@@ -1,0 +1,33 @@
+div.ie {
+	position: absolute;
+	left: 50%;
+	height: 100%;
+	width: 800px;
+	margin-left: -400px;
+}
+
+#siteTitle a {
+    position: relative;
+    display: block;
+	top: 15px;
+	height: 36px;
+	width: 381px;
+	cursor: pointer;
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-ms-filter:"alpha(opacity=70)";
+	opacity: 0;
+	z-index: 1;
+	text-indent: -9999px;
+}
+
+dl {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+input.input_text, textarea {
+	padding: 5px 5px;
+	width: 594px; /*パディングの分を削る*/
+	font-size: 14px;
+}

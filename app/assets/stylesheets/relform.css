@@ -1,0 +1,155 @@
+@charset 'utf-8';
+
+*.hidden {
+	visibility: hidden;
+}
+
+body {
+	width: 800px;
+	margin: 25px auto 50px auto;
+	font-size: 14px;
+	font-weight: normal;
+	font-family: sans-serif;
+	line-height: 100%;
+}
+
+
+header {
+	height: 100px;
+}
+
+#siteTitle {
+    position: relative;
+	top: 25px;
+	left: 499px;
+	height: 27px;
+	width: 321px;
+	background-image: url(http://vocalendar.jp/images/vocalendar-titlelogo-sketch.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	z-index: 0;
+}
+#siteTitle a {
+    position: relative;
+	cursor: pointer;
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	-ms-filter:"alpha(opacity=70)";
+	opacity: 0;
+	z-index: 1;
+}
+
+section#leader h1 {
+	font-size: 32px;
+	color: #666666;
+	margin-top: 50px;
+}
+
+section#leader p {
+	width: 600px;
+	line-height: 150%;
+	color: #333333;
+}
+
+dl {
+	position: relative;
+	width: 800px;
+	line-height: 150%;
+}
+
+dt {
+	color: #333333;
+	position: absolute;
+	top: 2px;
+	padding: 2px 0px;
+}
+
+dd {
+	position: relative;
+	left: 200px;
+	width: 600px;
+	margin-left: 0px;
+}
+
+dd.checkbox-conteinar {
+	padding: 2px 0px;
+}
+
+
+input {
+	color: #000000;
+}
+
+textarea {
+	font-size: 14px;
+	line-height: 150%;
+}
+
+input[type='text'], select {
+	padding: 5px 3px;
+	font-size: 14px;
+}
+
+input.wide, textarea {
+	padding: 5px 3px;
+	width: 594px; /*パディングの分を削る*/
+}
+
+div.submitbutton {
+	margin: 50px auto auto auto;
+	text-align: center;
+}
+
+footer {
+	font-size: 12px;
+	line-height: 135%;
+	color: #999999;
+	margin-top: 50px;
+}
+
+input.regist {
+	position: relative;
+	display: inline;
+	margin: 0;
+	padding: 0 10px;
+	height: 30px;
+	line-height: 28px;
+	font-size: 14px;
+	 color: #666666;
+	border: 1px solid #cccccc;
+	border-radius: 2px;
+	box-shadow: 0px 1px 0px white;
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+	  -webkit-transition: border-color .5s;
+	  -moz-transition: border-color .5s;
+	  -o-transition: border-color .5s;
+	  transition: border-color .5s;
+}
+input.regist:hover {
+	border: 1px solid #aaaaaa;
+	box-shadow: 0px 0px 2px #999999;
+}
+input.regist:active {
+	border: 1px solid #999999;
+	box-shadow: 0px 0px 1px black inset;
+}
+
+.error {
+	background-color: #FFBBBB;
+}
+
+.checkbox-set {
+	display: inline-block;
+	white-space: nowrap;
+	min-width: 8em;
+	margin-left: 1em;
+}
+
