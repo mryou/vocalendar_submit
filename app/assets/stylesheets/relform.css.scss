@@ -29,28 +29,35 @@ header {
 	background-repeat: no-repeat;
 	overflow: hidden;
 	z-index: 0;
-}
-#siteTitle a {
-    position: relative;
-	cursor: pointer;
-	filter: alpha(opacity=0);
-	-moz-opacity: 0;
-	-ms-filter:"alpha(opacity=70)";
-	opacity: 0;
-	z-index: 1;
+
+	a {
+	    position: relative;
+		cursor: pointer;
+		filter: alpha(opacity=0);
+		-moz-opacity: 0;
+		-ms-filter:"alpha(opacity=70)";
+		opacity: 0;
+		z-index: 1;
+	}
+
 }
 
-section#leader h1 {
-	font-size: 32px;
-	color: #666666;
-	margin-top: 50px;
+section#leader {
+
+	 h1 {
+		font-size: 32px;
+		color: #666666;
+		margin-top: 50px;
+	}
+
+	p {
+		width: 600px;
+		line-height: 150%;
+		color: #333333;
+	}
+
 }
 
-section#leader p {
-	width: 600px;
-	line-height: 150%;
-	color: #333333;
-}
 
 dl {
 	position: relative;
@@ -70,31 +77,40 @@ dd {
 	left: 200px;
 	width: 600px;
 	margin-left: 0px;
+
+	.checkbox-conteinar {
+		padding: 2px 0px;
+	}
 }
 
-dd.checkbox-conteinar {
-	padding: 2px 0px;
-}
 
 
 input {
 	color: #000000;
+
+  &[type='text'] {
+    padding: 5px 3px;
+    font-size: 14px;
+
+    .wide, {
+      width: 594px; /*パディングの分を削る*/
+    }
+  }
+}
+
+select {
+    padding: 5px 3px;
+    font-size: 14px;
 }
 
 textarea {
+  padding: 5px 3px;
+  width: 594px; /*パディングの分を削る*/
 	font-size: 14px;
 	line-height: 150%;
 }
 
-input[type='text'], select {
-	padding: 5px 3px;
-	font-size: 14px;
-}
 
-input.wide, textarea {
-	padding: 5px 3px;
-	width: 594px; /*パディングの分を削る*/
-}
 
 div.submitbutton {
 	margin: 50px auto auto auto;
@@ -108,7 +124,7 @@ footer {
 	margin-top: 50px;
 }
 
-input.regist {
+input.regist, a.btn {
 	position: relative;
 	display: inline;
 	margin: 0;
@@ -119,6 +135,7 @@ input.regist {
 	 color: #666666;
 	border: 1px solid #cccccc;
 	border-radius: 2px;
+	text-decoration: none;
 	box-shadow: 0px 1px 0px white;
 	background: rgb(255,255,255); /* Old browsers */
 	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
@@ -132,14 +149,23 @@ input.regist {
 	  -moz-transition: border-color .5s;
 	  -o-transition: border-color .5s;
 	  transition: border-color .5s;
-}
-input.regist:hover {
-	border: 1px solid #aaaaaa;
-	box-shadow: 0px 0px 2px #999999;
-}
-input.regist:active {
-	border: 1px solid #999999;
-	box-shadow: 0px 0px 1px black inset;
+
+	  &.back {
+	    top: -29px;
+	    padding-top: 4px;
+	    padding-bottom: 4px;
+	  }
+
+
+  &:hover {
+    border: 1px solid #aaaaaa;
+    box-shadow: 0px 0px 2px #999999;
+  }
+  &:active {
+    border: 1px solid #999999;
+    box-shadow: 0px 0px 1px black inset;
+  }
+
 }
 
 .error {

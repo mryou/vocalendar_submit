@@ -1,14 +1,16 @@
 <%= form_for @submission, :html => {:class => 'new_submission form-inline'} do |f| %>
 
 <% if @submission.errors.any? %>
-<% @submission.errors.full_messages.earh do |msg| %>
+<div class='error'>
+<% @submission.errors.full_messages.each do |msg| %>
   <p><%= msg %></p>
 <% end %>
+</div>
 <% end %>
 
 <dl>
 	<!-- カテゴリ入力 //-->
-	<dt><%= f.label :category %></dt>
+	<dt><%= f.label :category %><span class="required-mark">*</span></dt>
 	<dd>
 		<%= f.collection_select :category_id, Category.available, :id, :name_with_desc, {:prompt => true}   %>
 	</dd>
@@ -27,7 +29,7 @@
 	</dd>
 </dl>
 <dl>
-	<dt><%= f.label :start_datetime %></dt>
+	<dt><%= f.label :start_datetime %><span class="required-mark">*</span></dt>
 	<dd><%= f.text_field :start_date, :size => 10, :class => 'input-small' %> <%= f.text_field :start_time, :size => 7, :class => 'input-mini' %>
 	</dd>
 </dl>
