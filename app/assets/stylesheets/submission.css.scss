@@ -1,3 +1,28 @@
 // Place all the styles related to the submissions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.submission-detail, .category-detail {
+  border: none;
+  td, th {
+      padding: 0.5em 0.5em;
+  }
+
+  th {
+      text-align: right;
+      vertical-align: top;
+      white-space: nowrap;
+      font-weight: bold;
+  }
+}
+
+table.general-hor {
+  width: 90%;
+  margin-left: 5%;
+  border-collapse: collapse;
+  th, td { padding: 1em 0.8em; }
+  th { text-align: left; color: #108361; border-bottom: 2px solid #66b178; }
+  td { border-bottom: 1px solid #ccc; }
+  tr:hover td { color: black; background-color: #EDFFF0; }
+}
