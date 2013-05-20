@@ -25,7 +25,7 @@
 	<!-- イベントタイトル //-->
 	<dt><%= f.label :title %><span class="required-mark">*</span></dt>
 	<dd>
-		<%= f.text_field :title, :size => 40,:class =>'wide', :placeholder => 'イベントタイトルを入力してください。' %>
+		<%= f.text_field :title, :size => "70", :class =>'wide', :placeholder => 'イベントタイトルを入力してください。' %>
 	</dd>
 </dl>
 <dl>
@@ -46,20 +46,20 @@
 <dl>
 	<!-- 場所 //-->
 	<dt><%= f.label :where %></dt>
-	<dd><%= f.text_field :where, :class => 'wide', :placeholder => '場所の名前や住所を記入します（空白可）' %></dd>
+	<dd><%= f.text_field :where, :size => "70" ,:class => 'wide', :placeholder => '場所の名前や住所を記入します（空白可）' %></dd>
 </dl>
 <dl>
-	<dt><%= f.label :description %></dt>
+	<dt>イベント詳細<br>※自由記述</dt>
 	<dd><%= f.text_area :description, :rows => 7, :class => 'input-xlarge' %>
 	</dd>
 </dl>
 <dl>
-	<dt><%= f.label :url %></dt>
-	<dd><%= f.text_field :url, :class => 'wide', :placeholder => '1次情報のURLがあれば入力して下さい' %>
+	<dt>一次情報URL</dt>
+	<dd><%= f.text_field :url, :size => "70", :class => 'wide', :placeholder => '1次情報のURLがあれば入力して下さい' %>
 	</dd>
 </dl>
 <div class='submitbutton'>
-	<%= f.submit :value => '送信', :class => 'regist', :id => 'VEPsubmitBtn' %>
+	<%= f.submit :value => 'イベント情報を連絡する', :class => 'regist', :id => 'VEPsubmitBtn' %>
 </div>
 
 
