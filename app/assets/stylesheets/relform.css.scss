@@ -176,6 +176,13 @@ input.regist, a.btn {
 
 .error {
 	background-color: #FFBBBB;
+
+	p {
+    padding: 1em;
+    border: 1px solid #cc6666;
+    border-radius: 2px;
+  }
+
 }
 
 .checkbox-set {
