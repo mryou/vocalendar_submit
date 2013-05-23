@@ -175,13 +175,16 @@ input.regist, a.btn {
 }
 
 .error {
-	background-color: #FFBBBB;
-
-	p {
+  	background-color: #FFBBBB;
     padding: 1em;
     border: 1px solid #cc6666;
     border-radius: 2px;
-  }
+
+  	p {
+      margin: 0;
+      padding: 0;
+      line-height: 1.5em;
+    }
 
 }
 
