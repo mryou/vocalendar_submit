@@ -56,6 +56,7 @@ section#leader {
 		color: #333333;
 
 		&.attention {
+		  margin: 30px 0px;
 		  color: #666666;
 		}
 	}
@@ -117,6 +118,7 @@ textarea {
 
 
 div.submitbutton {
+  padding-left: 200px;
 	margin: 50px auto auto auto;
 	text-align: left;
 }
