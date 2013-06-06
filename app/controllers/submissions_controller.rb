@@ -43,7 +43,7 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(params[:submission])
     @submission.save
-    respond_with @submission, :location => submissions_path
+    respond_with @submission, :location => thanks_submissions_path
   end
 
   # PUT /submissions/1

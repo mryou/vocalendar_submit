@@ -4,6 +4,10 @@
 	visibility: hidden;
 }
 
+*.none {
+  display: none !important;
+}
+
 body {
 	width: 800px;
 	margin: 25px auto 50px auto;

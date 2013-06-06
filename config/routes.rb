@@ -6,6 +6,7 @@ VocalendarSubmit::Application.routes.draw do
     collection do
       get 'list' => 'submissions#list'
       get 'subcat_select' => 'submissions#subcat_select'
+      get 'thanks' => 'submissions#thanks'
     end
   end
 
