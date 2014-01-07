@@ -8,12 +8,14 @@ $(document).ready(function(){
 });
 
 </script>
+<section>
 <h1>イベント 連絡フォーム</h1>
 <p class="attention">
 イベント情報のご連絡、ありがとうございました。お寄せいただきました内容は、VOCALENDAR編集メンバーが確認したうえでVOCALENDARに登録いたします。登録が完了するまでには数日を要しますので、この点はご了承くださいませ。また、お寄せいただいた情報の内容に修正や更新があった場合には、改めて本フォームを用いてVOCALENDARにご連絡ください。みなさまのご協力に感謝いたします。
 </p>
-
-
+</section>
+<section>
 <%= link_to '閉じる', '#',  :on_click => 'window.close();return false;', :class => 'btn none' ,:id => 'closer' %>
 <%= link_to 'VOCALENDARへ', 'http://vocalendar.jp/',  :class => 'btn' ,:id => 'opener'%>
 <%= link_to '他のイベント情報を連絡する', new_submission_path, :class => 'btn' %>
+</section>

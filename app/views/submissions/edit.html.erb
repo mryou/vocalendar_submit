@@ -1,7 +1,9 @@
+<section>
 <h2>申請されたイベントの処理</h2>
 
 <%= render 'detail' %>
-
+</section>
+<section>
 <%= form_for(@submission) do |f| %>
 <p>
 <b><%= Submission.human_attribute_name :status %>:</b> 
@@ -53,3 +55,4 @@
 
 
 <%= link_to '一覧に戻る', list_submissions_path, :class => 'btn' %>
+</section>
