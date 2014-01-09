@@ -139,8 +139,6 @@ input.regist, a.btn {
 	display: inline;
 	margin: 0;
 	padding: 0 10px;
-	height: 30px;
-	line-height: 28px;
 	font-size: 14px;
 	 color: #666666;
 	border: 1px solid #cccccc;
@@ -178,6 +176,14 @@ input.regist, a.btn {
 
 }
 
+a.btn {
+  padding: 7px 10px;
+}
+
+input.regist {
+  height: 30px;
+  line-height: 28px;
+}
 .error {
   	background-color: #FFBBBB;
     padding: 1em;
