@@ -23,7 +23,7 @@ class Submission < ActiveRecord::Base
     :start_datetime, :start_date, :start_time,
     :end_datetime, :end_date, :end_time,
     :category_id, :category_name, :status_id, :all_day,
-    :sub_category_id
+    :sub_category_id, :sponsor_address, :contact_address, :result
 
   STATUS_ID_NAME_MAP = {1 => :new, 2 => :accepted, 3 => :rejected, 4 => :spam}
   STATUS_NAME_ID_MAP = STATUS_ID_NAME_MAP.invert
@@ -160,7 +160,7 @@ class Submission < ActiveRecord::Base
     self.end_datetime = self.start_datetime
     true
   end
-  
+
   def clear_time_when_all_day
     self.all_day? or return true
     t = DateTime.new(2000, 1, 1, 0, 0, 0)

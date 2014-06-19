@@ -39,4 +39,22 @@
       <th><%= Submission.human_attribute_name :url %>:</th>
       <td><%= link_to_if @submission.url, @submission.url, @submission.url %></td>
     </tr>
-  </table>
+    <tr>
+      <th><%= Submission.human_attribute_name :sponsor_address %>:</th>
+      <td><%= @submission.sponsor_address %></td>
+    </tr>
+    <tr>
+      <th><%= Submission.human_attribute_name :contact_address %>:</th>
+      <td><%= @submission.contact_address %></td>
+    </tr>
+	<tr>
+		<th><%= Submission.human_attribute_name :result %>:</th>
+		<td>
+		<% if form %>
+		<%= form.text_area :result, :rows => 7, :class => 'input-xlarge' %>
+		<% else %>
+     	 <%= @submission.result %>
+		<% end %>
+		</td>
+	</tr>
+</table>

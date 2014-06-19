@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703185926) do
+ActiveRecord::Schema.define(:version => 20140617075918) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",                                     :null => false
@@ -39,19 +39,22 @@ ActiveRecord::Schema.define(:version => 20120703185926) do
   add_index "sub_categories", ["group_id"], :name => "index_sub_categories_on_group_id"
 
   create_table "submissions", :force => true do |t|
-    t.string   "title",           :default => "",    :null => false
-    t.datetime "start_datetime",                     :null => false
-    t.datetime "end_datetime",                       :null => false
-    t.boolean  "all_day",         :default => false, :null => false
+    t.string   "title",                          :default => "",    :null => false
+    t.datetime "start_datetime",                                    :null => false
+    t.datetime "end_datetime",                                      :null => false
+    t.boolean  "all_day",                        :default => false, :null => false
     t.text     "where"
-    t.text     "description",     :default => ""
-    t.integer  "status_id",       :default => 1,     :null => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.text     "description",                    :default => ""
+    t.integer  "status_id",                      :default => 1,     :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.datetime "accepted_at"
     t.integer  "category_id"
     t.text     "url"
     t.integer  "sub_category_id"
+    t.string   "sponsor_address", :limit => nil
+    t.string   "contact_address", :limit => nil
+    t.text     "result"
   end
 
   add_index "submissions", ["accepted_at", "status_id"], :name => "index_submissions_on_accepted_at_and_status_id"

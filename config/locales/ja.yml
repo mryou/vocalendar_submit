@@ -26,6 +26,9 @@ ja:
         sub_category_id: サブカテゴリ
         sub_category_name: サブカテゴリ
         url: URL
+        sponsor_address: 主催者連絡先
+        contact_address: 申請者連絡先
+        result: 申請受理/却下理由
       category:
         name: 名前
         order_class: 整列優先度

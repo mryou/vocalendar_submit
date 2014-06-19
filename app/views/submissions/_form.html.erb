@@ -58,6 +58,16 @@
 	<dd><%= f.text_field :url, :size => "70", :class => 'wide', :placeholder => '1次情報のURLがあれば入力して下さい' %>
 	</dd>
 </dl>
+<dl>
+	<dt>投稿者連絡先</dt>
+	<dd><%= f.text_field :contact_address, :size => "70", :class => 'wide', :placeholder => 'メールアドレスやツイッターIDなどを入力してください' %>
+	</dd>
+</dl>
+<dl>
+	<dt>主催者連絡先</dt>
+	<dd><%= f.text_field :sponsor_address, :size => "70", :class => 'wide', :placeholder => 'メールアドレスやツイッターIDなどを入力してください' %>
+	</dd>
+</dl>
 <div class='submitbutton'>
 	<%= f.submit :value => 'イベント情報を連絡する', :class => 'regist', :id => 'VEPsubmitBtn' %>
 </div>

@@ -1,17 +1,19 @@
 <section>
 <h2>申請されたイベントの処理</h2>
 
-<%= render 'detail' %>
-</section>
-<section>
 <%= form_for(@submission) do |f| %>
+
+<%= render 'detail', form:f %>
+
 <p>
-<b><%= Submission.human_attribute_name :status %>:</b> 
+<b><%= Submission.human_attribute_name :status %>:</b>
   <%= f.collection_select :status_id, Submission.statuses, :id, :human_name %>
   <%= f.submit :value => '変更する', :name => nil %>
 </p>
 <% end %>
 
+</section>
+<section>
 
 <% if @submission.status == :new %>
 <div class="btn-group btn-inline">

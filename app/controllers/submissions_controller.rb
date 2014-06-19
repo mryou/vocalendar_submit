@@ -50,7 +50,7 @@ class SubmissionsController < ApplicationController
   # PUT /submissions/1.json
   def update
     @submission = Submission.find(params[:id])
-    @submission.update_attributes(params[:submission].select{|k, v| %w(status_id).member? k})
+    @submission.update_attributes(params[:submission].select{|k, v| %w(status_id result).member? k})
     respond_with @submission
   end
 
